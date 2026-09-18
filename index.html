@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f6f7f1">
+    <meta name="theme-color" content="#f4f3ee">
     <meta name="description" content="n4vvii makes small hobby projects with Vibe Coding.">
     <title>n4vvii — small ideas, roughly made</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -16,19 +16,16 @@
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href="#top" aria-label="n4vvii home">
+          <a class="brand" data-link="site.profile" href="https://github.com/n4vvii" target="_blank" rel="noopener" aria-label="n4vvii on GitHub">
             <span class="brand-mark" aria-hidden="true">n4</span>
-            <span>n4vvii</span>
+            <span data-text="site.profile.label">n4vvii</span>
           </a>
           <nav class="main-nav" aria-label="Main navigation">
-            <a data-nav="work" href="#work">Work</a>
+            <a data-nav="project" href="#projects">Project</a>
             <a data-nav="about" href="#about">About</a>
             <a data-nav="contact" href="#contact">Contact</a>
           </nav>
-          <div class="header-socials" aria-label="Social links">
-            <a class="social-link" data-social="x" href="https://x.com/n4vvii" target="_blank" rel="noopener">X <span aria-hidden="true">↗</span></a>
-            <a class="social-link" data-social="github" href="https://github.com/n4vvii" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-          </div>
+          <div class="header-socials" id="header-socials" aria-label="Social links"></div>
         </div>
       </header>
 
@@ -36,11 +33,11 @@
         <section class="hero" aria-labelledby="hero-title">
           <div class="container hero-grid">
             <div class="hero-copy">
-              <p class="kicker" data-text="hero.eyebrow">hobby coding / Ōita, Japan</p>
+              <p class="kicker" data-text="hero.eyebrow">hobby coding / Japan</p>
               <h1 id="hero-title" data-text="hero.title">I make the little things I think of.</h1>
               <p class="hero-lede" data-text="hero.body">A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.</p>
               <div class="hero-actions">
-                <a class="button button--primary" data-link="hero.primary" href="#work">See the work <span aria-hidden="true">↓</span></a>
+                <a class="button button--primary" data-link="hero.primary" href="#projects">See the projects <span aria-hidden="true">↓</span></a>
                 <a class="text-link" data-link="hero.secondary" href="https://x.com/n4vvii" target="_blank" rel="noopener">Say hi on X <span aria-hidden="true">↗</span></a>
               </div>
             </div>
@@ -67,14 +64,14 @@
           </div>
         </section>
 
-        <section class="section work-section" id="work" aria-labelledby="work-title">
+        <section class="section projects-section" id="projects" aria-labelledby="projects-title">
           <div class="container">
             <div class="section-heading">
               <div>
-                <p class="kicker" data-text="work.eyebrow">stuff I made</p>
-                <h2 id="work-title" data-text="work.title">A couple of things on the shelf.</h2>
+                <p class="kicker" data-text="projectsSection.eyebrow">projects</p>
+                <h2 id="projects-title" data-text="projectsSection.title">A few things I made.</h2>
               </div>
-              <p class="section-intro" data-text="work.intro">No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you.</p>
+              <p class="section-intro" data-text="projectsSection.intro">Small ideas made for fun. Have a look around and enjoy the vibe.</p>
             </div>
             <div class="project-list" id="project-list"></div>
           </div>
@@ -83,8 +80,12 @@
         <section class="section about-section" id="about" aria-labelledby="about-title">
           <div class="container about-grid">
             <div class="about-copy">
-              <p class="kicker" data-text="about.eyebrow">the person behind the tabs</p>
-              <h2 id="about-title" data-text="about.title">No master plan. Just a lot of tabs.</h2>
+              <p class="kicker" data-text="about.eyebrow">about n4vvii</p>
+              <a class="about-person" data-link="about.profile" href="https://github.com/n4vvii" target="_blank" rel="noopener">
+                <span data-text="about.profile.label">n4vvii on GitHub</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <h2 id="about-title" data-text="about.title">Just making things for fun.</h2>
               <div class="about-paragraphs" id="about-paragraphs"></div>
             </div>
             <aside class="recipe-card" aria-label="A rough recipe for making things">
@@ -113,7 +114,7 @@
       <footer class="site-footer">
         <div class="container footer-inner">
           <span data-text="footer.left">© 2026 n4vvii / made for fun</span>
-          <span data-text="footer.middle">vibe-coded from Ōita, Japan</span>
+          <span data-text="footer.middle">vibe-coded in Japan</span>
           <a data-link="footer.kofi" href="https://ko-fi.com/n4vvii" target="_blank" rel="noopener">Support on Ko-fi <span aria-hidden="true">↗</span></a>
         </div>
       </footer>

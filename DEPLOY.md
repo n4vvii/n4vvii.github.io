@@ -69,7 +69,7 @@ GitHub Pagesの静的ファイルだけではHTTP 301を返せないため、転
     curl -I https://n4vvii.com/
     curl -I https://n4vvii.github.io/
 
-ブラウザでもトップ、Ninedbase、X、GitHub、Discord、Ko-fiのリンクを確認します。
+ブラウザでもトップ、Ninedbase、X、GitHub、Ko-fiのリンクを確認します。
 
 ## 参考にした公式ドキュメント
 

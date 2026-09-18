@@ -30,9 +30,46 @@
     if (!node || !link) return;
     node.href = safeUrl(link.href);
     var label = node.firstChild;
-    if (label && label.nodeType === Node.TEXT_NODE && link.label) {
+    if (label && label.nodeType === Node.TEXT_NODE && link.label && label.textContent.trim()) {
       label.textContent = link.label + " ";
     }
+  };
+
+  var socialIconPaths = {
+    github: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.73.084-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+    x: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.963 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+  };
+
+  var createSocialIcon = function (type) {
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "social-icon");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", socialIconPaths[type] || socialIconPaths.github);
+    path.setAttribute("fill", "currentColor");
+    svg.appendChild(path);
+    return svg;
+  };
+
+  var renderSocials = function (socials) {
+    var target = document.getElementById("header-socials");
+    if (!target) return;
+    target.textContent = "";
+    Object.keys(socials || {}).forEach(function (key) {
+      var social = socials[key];
+      if (!social || !social.href) return;
+      var anchor = create("a", "social-link");
+      anchor.href = safeUrl(social.href);
+      anchor.target = "_blank";
+      anchor.rel = "noopener";
+      anchor.setAttribute("aria-label", social.label || key);
+      anchor.title = social.label || key;
+      anchor.appendChild(createSocialIcon(social.icon || key));
+      anchor.appendChild(create("span", "sr-only", social.label || key));
+      target.appendChild(anchor);
+    });
   };
 
   var renderVisual = function (visual) {
@@ -135,7 +172,10 @@
       anchor.href = safeUrl(link.href);
       anchor.target = "_blank";
       anchor.rel = "noopener";
-      anchor.appendChild(create("span", "", link.label));
+      var lead = create("span", "contact-link__lead");
+      if (link.icon) lead.appendChild(createSocialIcon(link.icon));
+      lead.appendChild(create("span", "contact-link__label", link.label));
+      anchor.appendChild(lead);
       anchor.appendChild(create("small", "", link.note));
       target.appendChild(anchor);
     });
@@ -146,6 +186,10 @@
     document.title = content.site.title;
     var description = document.querySelector('meta[name="description"]');
     if (description) description.content = content.site.description;
+
+    text('[data-text="site.profile.label"]', content.site.profile && content.site.profile.label);
+    setLink('[data-link="site.profile"]', content.site.profile);
+    renderSocials(content.socials);
 
     Object.keys(content.nav || {}).forEach(function (key) {
       var nav = document.querySelector('[data-nav="' + key + '"]');
@@ -165,9 +209,9 @@
     setLink('[data-link="hero.primary"]', content.hero.primary);
     setLink('[data-link="hero.secondary"]', content.hero.secondary);
 
-    text('[data-text="work.eyebrow"]', content.work.eyebrow);
-    text('[data-text="work.title"]', content.work.title);
-    text('[data-text="work.intro"]', content.work.intro);
+    text('[data-text="projectsSection.eyebrow"]', content.projectsSection.eyebrow);
+    text('[data-text="projectsSection.title"]', content.projectsSection.title);
+    text('[data-text="projectsSection.intro"]', content.projectsSection.intro);
     var projectList = document.getElementById("project-list");
     if (projectList) {
       projectList.textContent = "";
@@ -177,6 +221,8 @@
     }
 
     text('[data-text="about.eyebrow"]', content.about.eyebrow);
+    text('[data-text="about.profile.label"]', content.about.profile && content.about.profile.label);
+    setLink('[data-link="about.profile"]', content.about.profile);
     text('[data-text="about.title"]', content.about.title);
     text('[data-text="about.calloutLabel"]', content.about.calloutLabel);
     text('[data-text="about.calloutNote"]', content.about.calloutNote);

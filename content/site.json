@@ -3,18 +3,26 @@
     "language": "en",
     "title": "n4vvii — small ideas, roughly made",
     "description": "A casual portfolio by n4vvii: small hobby projects made with Vibe Coding.",
-    "year": "2026"
+    "year": "2026",
+    "profile": {
+      "label": "n4vvii",
+      "href": "https://github.com/n4vvii"
+    }
   },
   "nav": {
-    "work": { "label": "Work", "href": "#work" },
+    "project": { "label": "Project", "href": "#projects" },
     "about": { "label": "About", "href": "#about" },
     "contact": { "label": "Contact", "href": "#contact" }
   },
+  "socials": {
+    "x": { "label": "X", "href": "https://x.com/n4vvii", "icon": "x" },
+    "github": { "label": "GitHub", "href": "https://github.com/n4vvii", "icon": "github" }
+  },
   "hero": {
-    "eyebrow": "hobby coding / Ōita, Japan",
+    "eyebrow": "hobby coding / Japan",
     "title": "I make the little things I think of.",
     "body": "A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.",
-    "primary": { "label": "See the work", "href": "#work" },
+    "primary": { "label": "See the projects", "href": "#projects" },
     "secondary": { "label": "Say hi on X", "href": "https://x.com/n4vvii" },
     "noteLabel": "current mood",
     "noteTitle": "Vibe Coding",
@@ -22,10 +30,10 @@
     "noteMeta": "hobby projects / no grand plan",
     "footnote": "made from a vague idea, a cup of something, and a little Vibe Coding"
   },
-  "work": {
-    "eyebrow": "stuff I made",
-    "title": "A couple of things on the shelf.",
-    "intro": "No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you."
+  "projectsSection": {
+    "eyebrow": "projects",
+    "title": "A few things I made.",
+    "intro": "Small ideas made for fun. Have a look around and enjoy the vibe."
   },
   "projects": [
     {
@@ -54,34 +62,37 @@
     }
   ],
   "about": {
-    "eyebrow": "the person behind the tabs",
-    "title": "No master plan. Just a lot of tabs.",
+    "eyebrow": "about n4vvii",
+    "title": "Just making things for fun.",
     "paragraphs": [
-      "I'm n4vvii, an indie developer in Ōita, Japan. I use Vibe Coding to turn random sparks into things I can click, share, or keep tinkering with.",
-      "This page is less of a résumé and more of a small window into that process. If something here makes you curious, that is probably enough."
+      "I'm n4vvii. I use Vibe Coding to turn loose ideas into things I can use, share, and keep tinkering with.",
+      "This page is a small collection of those experiments. Have a look around and enjoy the vibe."
     ],
-    "calloutLabel": "the recipe",
+    "profile": {
+      "label": "n4vvii on GitHub",
+      "href": "https://github.com/n4vvii"
+    },
+    "calloutLabel": "how it starts",
     "calloutLines": [
-      "a loose idea",
+      "a small idea",
       "some Vibe Coding",
-      "a little stubbornness",
-      "ship it and see"
+      "make it usable",
+      "enjoy the vibe"
     ],
-    "calloutNote": "Good enough is a perfectly good place to start."
+    "calloutNote": "No big plan needed."
   },
   "contact": {
-    "eyebrow": "come say hi",
-    "title": "Got an idea? Or just passing through?",
-    "body": "Find me on the internet. I might be making something small.",
+    "eyebrow": "links",
+    "title": "Thanks for stopping by.",
+    "body": "Find me on GitHub or X. More small ideas will probably appear there.",
     "links": [
-      { "label": "X / @n4vvii", "note": "say hello", "href": "https://x.com/n4vvii" },
-      { "label": "GitHub / n4vvii", "note": "look around", "href": "https://github.com/n4vvii" },
-      { "label": "Discord", "note": "find me there", "href": "https://discord.com/users/856906697633431552" }
+      { "label": "X / @n4vvii", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
+      { "label": "GitHub / n4vvii", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }
     ],
     "kofi": { "label": "Support on Ko-fi", "href": "https://ko-fi.com/n4vvii" }
   },
   "footer": {
     "left": "© 2026 n4vvii / made for fun",
-    "middle": "vibe-coded from Ōita, Japan"
+    "middle": "vibe-coded in Japan"
   }
 }

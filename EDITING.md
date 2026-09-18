@@ -7,12 +7,14 @@
 | 項目 | 変わる場所 |
 | --- | --- |
 | site.title / site.description | ブラウザのタイトルと検索向け説明 |
+| site.profile | ヘッダーの n4vvii リンク先 |
 | nav | 上部メニューの表示名とリンク先 |
+| socials | ヘッダーのGitHub・Xアイコンの表示名とURL |
 | hero | トップの見出し、説明、ボタン、右側のメモ |
-| work | 作品セクションの見出しと説明 |
+| projectsSection | 作品セクションの見出しと説明 |
 | projects | 作品名、状態、説明、リンク、タグ、作品ごとの短いキャプション |
-| about | プロフィールと右側の「recipe」メモ |
-| contact.links | X、GitHub、Discordの表示名・説明・URL |
+| about | プロフィール、GitHubリンク、右側のメモ |
+| contact.links | X・GitHubの表示名、説明、URL、アイコン |
 | contact.kofi | フッターのKo-fiリンク |
 | footer | フッターの文言 |
 
