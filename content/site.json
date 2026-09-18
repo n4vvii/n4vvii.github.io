@@ -47,7 +47,7 @@
       "stack": "SwiftUI / iOS",
       "title": "PriceMemo",
       "description": "商品の価格と内容量を比べて、どちらが安いか確認するアプリ。",
-      "link": "https://github.com/n4vvii/apps/releases/download/pricememo-v1.0/PriceMemo.ipa",
+      "link": "https://github.com/n4vvii/apps/releases/download/pricememo-v1.0/PriceMemo.ipa?download=1",
       "download": true,
       "visual": "calculator"
     }
