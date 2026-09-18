@@ -91,7 +91,11 @@
     window.setTimeout(write, 180);
   };
 
+  var stopRevealTracking = function () {};
+
   var revealAll = function () {
+    stopRevealTracking();
+    document.documentElement.classList.remove("reveal-ready");
     var nodes = document.querySelectorAll("[data-reveal]");
     Array.prototype.forEach.call(nodes, function (node) {
       node.classList.add("is-visible");
@@ -109,16 +113,53 @@
       node.style.setProperty("--reveal-delay", Math.min(index * 55, 220) + "ms");
     });
 
+    document.documentElement.classList.add("reveal-ready");
+
     var ticking = false;
+    var finished = false;
+    var fallbackTimer = 0;
+    var scrollTargets = [window, document];
+    if (document.scrollingElement) scrollTargets.push(document.scrollingElement);
+
+    var addScrollParents = function (node) {
+      var parent = node.parentElement;
+      while (parent && parent !== document.body && parent !== document.documentElement) {
+        var styles = window.getComputedStyle(parent);
+        var overflow = styles.overflow + styles.overflowY + styles.overflowX;
+        if (/(auto|scroll|overlay)/.test(overflow) && scrollTargets.indexOf(parent) === -1) {
+          scrollTargets.push(parent);
+        }
+        parent = parent.parentElement;
+      }
+    };
+    Array.prototype.forEach.call(nodes, addScrollParents);
+
+    var isVisible = function (node) {
+      var bounds = node.getBoundingClientRect();
+      var top = 0;
+      var bottom = window.innerHeight;
+      var parent = node.parentElement;
+      while (parent && parent !== document.body && parent !== document.documentElement) {
+        var styles = window.getComputedStyle(parent);
+        var overflow = styles.overflow + styles.overflowY + styles.overflowX;
+        if (/(auto|scroll|overlay)/.test(overflow)) {
+          var parentBounds = parent.getBoundingClientRect();
+          top = Math.max(top, parentBounds.top);
+          bottom = Math.min(bottom, parentBounds.bottom);
+        }
+        parent = parent.parentElement;
+      }
+      return bounds.top < bottom && bounds.bottom > top - 40;
+    };
+
     var check = function () {
-      if (ticking) return;
+      if (ticking || finished) return;
       ticking = true;
-      window.setTimeout(function () {
+      var run = function () {
         var remaining = 0;
         Array.prototype.forEach.call(nodes, function (node) {
           if (node.classList.contains("is-visible")) return;
-          var bounds = node.getBoundingClientRect();
-          if (bounds.top < window.innerHeight * .9 && bounds.bottom > -40) {
+          if (isVisible(node)) {
             node.classList.add("is-visible");
           } else {
             remaining += 1;
@@ -126,16 +167,50 @@
         });
         ticking = false;
         if (!remaining) {
-          window.removeEventListener("scroll", check);
-          document.removeEventListener("scroll", check);
-          window.removeEventListener("resize", check);
+          stopRevealTracking();
         }
-      }, 16);
+      };
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(run);
+      } else {
+        window.setTimeout(run, 16);
+      }
     };
 
-    window.addEventListener("scroll", check, { passive: true });
-    document.addEventListener("scroll", check, { passive: true });
+    var observer = null;
+    if (window.IntersectionObserver) {
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+        check();
+      }, { rootMargin: "0px 0px 15% 0px", threshold: 0.01 });
+      Array.prototype.forEach.call(nodes, function (node) {
+        observer.observe(node);
+      });
+    }
+
+    stopRevealTracking = function () {
+      if (finished) return;
+      finished = true;
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      scrollTargets.forEach(function (target) {
+        target.removeEventListener("scroll", check);
+      });
+      window.removeEventListener("resize", check);
+      window.removeEventListener("load", check);
+      document.removeEventListener("visibilitychange", check);
+      if (observer) observer.disconnect();
+      stopRevealTracking = function () {};
+    };
+
+    scrollTargets.forEach(function (target) {
+      target.addEventListener("scroll", check, { passive: true });
+    });
     window.addEventListener("resize", check);
+    window.addEventListener("load", check);
+    document.addEventListener("visibilitychange", check);
+    fallbackTimer = window.setTimeout(revealAll, 1400);
     check();
   };
 
@@ -171,7 +246,7 @@
     if (label) label.textContent = labelText;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = isDark ? "#0e1a1e" : "#f3f7f6";
+    if (themeColor) themeColor.content = isDark ? "#000000" : "#f3f7f6";
   };
 
   var initTheme = function () {
@@ -280,7 +355,6 @@
     database.appendChild(windowBar);
     var query = create("div", "art-query");
     query.appendChild(create("span", "", "選手を検索..."));
-    query.appendChild(create("b", "", "↗"));
     database.appendChild(query);
     var table = create("div", "art-table");
     [
@@ -310,20 +384,18 @@
     var content = create("div", "project-content");
     content.appendChild(create("p", "project-stack", project.stack));
 
-    content.appendChild(create("h3", "", project.title));
-    content.appendChild(create("p", "project-description", project.description));
-
-    var projectFooter = create("div", "project-footer");
+    var title = create("h3", "");
     if (project.link) {
-      var projectLink = create("a", "project-link", "");
-      projectLink.href = safeUrl(project.link);
-      projectLink.target = "_blank";
-      projectLink.rel = "noopener";
-      projectLink.appendChild(document.createTextNode(project.linkLabel || "見る"));
-      projectLink.appendChild(create("span", "", "↗"));
-      projectFooter.appendChild(projectLink);
+      var titleLink = create("a", "project-card-link", project.title);
+      titleLink.href = safeUrl(project.link);
+      titleLink.target = "_blank";
+      titleLink.rel = "noopener";
+      title.appendChild(titleLink);
+    } else {
+      title.textContent = project.title;
     }
-    content.appendChild(projectFooter);
+    content.appendChild(title);
+    content.appendChild(create("p", "project-description", project.description));
     article.appendChild(content);
     article.setAttribute("aria-label", "作品" + (index + 1) + ": " + project.title);
     return article;

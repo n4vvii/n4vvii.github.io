@@ -41,7 +41,6 @@
       "title": "Ninedbase",
       "description": "プロスピAの選手データベース。選手情報を検索・閲覧できます。",
       "link": "https://ninedbase.n4vvii.com/",
-      "linkLabel": "Ninedbaseを見る",
       "visual": "database"
     },
     {
@@ -49,7 +48,6 @@
       "title": "単価比較アプリ",
       "description": "商品の価格と内容量を比べて、どちらが安いか確認するアプリ。",
       "link": "https://github.com/n4vvii",
-      "linkLabel": "GitHubを見る",
       "visual": "calculator"
     }
   ],
