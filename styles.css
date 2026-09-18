@@ -227,7 +227,7 @@ a {
 }
 
 .main-nav a {
-  font-size: .84rem;
+  font-size: .92rem;
 }
 
 .main-nav a:hover,
@@ -369,7 +369,7 @@ h1 {
   margin-bottom: 1.75rem;
   font-size: clamp(3.5rem, 7.9vw, 6.4rem);
   font-weight: 600;
-  line-height: .91;
+  line-height: .98;
 }
 
 .typing-text {
@@ -609,6 +609,10 @@ body.is-ready .hero-footnote {
   min-height: calc(100vh + var(--section-top-space) - var(--header-offset) + 1rem);
   padding: var(--section-top-space) 0 0;
   scroll-margin-top: calc(-1 * var(--section-top-space));
+}
+
+.projects-section {
+  padding-bottom: 6rem;
 }
 
 .section-heading {
@@ -1498,10 +1502,6 @@ h2 {
 
   .section {
     --section-top-space: 5rem;
-  }
-
-  .projects-section {
-    padding-bottom: 6rem;
   }
 
   h2 {
