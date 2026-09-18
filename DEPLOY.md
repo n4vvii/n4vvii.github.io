@@ -46,9 +46,9 @@ PC幅と390px幅で確認し、内容に問題がなければサーバーを停�
 
     cd /Users/na/Master/Portfolio/n4vvii.github.io
     git switch renewal-2026
-    git add index.html styles.css script.js content/site.json EDITING.md DEPLOY.md wrangler.toml github-pages-redirect
-    git commit -m "Renew n4vvii portfolio"
-    git push -u origin renewal-2026
+    git push --force-with-lease origin renewal-2026:main
+
+この手順では、ポートフォリオのソースを `main` に置きます。`main` を転送ページで上書きしません。
 
 ## 4. Cloudflare Pagesプロジェクトを作る
 
@@ -76,10 +76,13 @@ Wranglerのログイン状態を確認し、プロジェクトを作成して初
 このリポジトリには github-pages-redirect/index.html として転送用ページを別ディレクトリに用意しています。Cloudflare Pagesの表示確認後、ユーザー確認を取ってから実行します。
 
     cd /Users/na/Master/Portfolio/n4vvii.github.io
-    cp github-pages-redirect/index.html index.html
-    git add index.html
-    git commit -m "Redirect GitHub Pages to n4vvii.com"
-    git push origin main
+    git switch renewal-2026
+    git subtree split --prefix=github-pages-redirect -b gh-pages
+    git push --force-with-lease origin gh-pages
+
+GitHubのリポジトリ設定で **Pages → Build and deployment → Branch** を `gh-pages`、フォルダを `/(root)` に変更します。APIで切り替える場合は次を実行します。
+
+    gh api --method PUT repos/n4vvii/n4vvii.github.io/pages -f 'source[branch]=gh-pages' -f 'source[path]=/'
 
 GitHub Pagesの静的ファイルだけではHTTP 301を返せないため、転送ページはmeta refreshとJavaScript、通常リンクの3段構成です。n4vvii.github.io のルートアクセスを https://n4vvii.com/ へ送ります。
 
