@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f4f3ee">
+    <meta name="theme-color" content="#f3f7f6">
     <meta name="description" content="n4vvii makes small hobby projects with Vibe Coding.">
     <title>n4vvii — small ideas, roughly made</title>
     <script>
@@ -26,10 +26,10 @@
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" data-link="site.profile" href="https://github.com/n4vvii" target="_blank" rel="noopener" aria-label="n4vvii on GitHub">
+          <div class="brand" aria-label="n4vvii">
             <span class="brand-mark" aria-hidden="true">n4</span>
             <span data-text="site.profile.label">n4vvii</span>
-          </a>
+          </div>
           <nav class="main-nav" aria-label="Main navigation">
             <a data-nav="project" href="#projects">Project</a>
             <a data-nav="about" href="#about">About</a>
@@ -50,7 +50,7 @@
           <div class="container hero-grid">
             <div class="hero-copy">
               <p class="kicker" data-text="hero.eyebrow">hobby coding / Japan</p>
-              <h1 id="hero-title" data-text="hero.title">I make the little things I think of.</h1>
+              <h1 id="hero-title" data-text="hero.title" aria-label="I make the little things I think of."><span class="typing-text" aria-hidden="true">I make the little things I think of.</span><span class="typing-caret" aria-hidden="true"></span></h1>
               <p class="hero-lede" data-text="hero.body">A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.</p>
               <div class="hero-actions">
                 <a class="button button--primary" data-link="hero.primary" href="#projects">See the work <span aria-hidden="true">↓</span></a>
@@ -82,7 +82,7 @@
 
         <section class="section projects-section" id="projects" aria-labelledby="projects-title">
           <div class="container">
-            <div class="section-heading">
+            <div class="section-heading" data-reveal>
               <div>
                 <p class="kicker" data-text="projectsSection.eyebrow">stuff I made</p>
                 <h2 id="projects-title" data-text="projectsSection.title">A couple of things on the shelf.</h2>
@@ -95,7 +95,7 @@
 
         <section class="section about-section" id="about" aria-labelledby="about-title">
           <div class="container about-grid">
-            <div class="about-copy">
+            <div class="about-copy" data-reveal>
               <p class="kicker" data-text="about.eyebrow">the person behind the tabs</p>
               <a class="about-person" data-link="about.profile" href="https://github.com/n4vvii" target="_blank" rel="noopener">
                 <span data-text="about.profile.label">n4vvii on GitHub</span>
@@ -104,7 +104,7 @@
               <h2 id="about-title" data-text="about.title">No master plan. Just a lot of tabs.</h2>
               <div class="about-paragraphs" id="about-paragraphs"></div>
             </div>
-            <aside class="recipe-card" aria-label="A rough recipe for making things">
+            <aside class="recipe-card" data-reveal aria-label="A rough recipe for making things">
               <div class="recipe-topline">
                 <span data-text="about.calloutLabel">the recipe</span>
                 <span aria-hidden="true">✳</span>
@@ -116,7 +116,7 @@
         </section>
 
         <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-          <div class="container contact-grid">
+          <div class="container contact-grid" data-reveal>
             <div>
               <p class="kicker" data-text="contact.eyebrow">come say hi</p>
               <h2 id="contact-title" data-text="contact.title">Got an idea? Or just passing through?</h2>
@@ -141,6 +141,6 @@
     <noscript>
       <div class="no-script">This little site needs JavaScript to load its editable content.</div>
     </noscript>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20260918-motion" defer></script>
   </body>
 </html>

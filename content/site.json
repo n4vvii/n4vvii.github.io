@@ -86,8 +86,8 @@
     "title": "Got an idea? Or just passing through?",
     "body": "Find me on the internet. I might be making something small.",
     "links": [
-      { "label": "X / @n4vvii", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
-      { "label": "GitHub / n4vvii", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }
+      { "label": "X", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
+      { "label": "GitHub", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }
     ],
     "kofi": { "label": "Support on Ko-fi", "href": "https://ko-fi.com/n4vvii" }
   },

@@ -1,24 +1,28 @@
 :root {
-  --canvas: #f4f3ee;
-  --paper: #fffdf8;
-  --ink: #262520;
-  --muted: #6d6a63;
-  --line: #dedbd2;
-  --blue: #44648f;
-  --blue-dark: #304d75;
-  --yellow: #e8c96a;
-  --coral: #cc6a55;
-  --mint: #e1e9e1;
-  --field: #e9eee8;
-  --navy: #263b4e;
-  --header-bg: rgba(246, 247, 241, .94);
-  --header-line: rgba(217, 223, 215, .86);
-  --body-soft: #4f5751;
+  --header-offset: 5rem;
+  --canvas: #f3f7f6;
+  --paper: #fcfffe;
+  --ink: #17282d;
+  --muted: #64777b;
+  --line: #d6e3e1;
+  --cyan: #12b9c7;
+  --cyan-deep: #047884;
+  --blue: var(--cyan);
+  --blue-dark: var(--cyan-deep);
+  --yellow: #e5c75d;
+  --coral: #df7861;
+  --mint: #e3f0ed;
+  --field: #e7f3f1;
+  --navy: #163d4b;
+  --header-bg: rgba(243, 247, 246, .93);
+  --header-line: rgba(182, 211, 210, .72);
+  --body-soft: #4b6267;
   --inverse: #fffef9;
   --on-ink: #fffef9;
   --radius: 18px;
   --max-width: 1120px;
-  --ease-out: cubic-bezier(.22, .7, .25, 1);
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-in-out: cubic-bezier(.77, 0, .175, 1);
   color: var(--ink);
   background: var(--canvas);
   color-scheme: light;
@@ -28,45 +32,49 @@
 }
 
 :root[data-theme="dark"] {
-  --canvas: #171b1d;
-  --paper: #22282b;
-  --ink: #eef2eb;
-  --muted: #a8b0aa;
-  --line: #394247;
-  --blue: #8db2d4;
-  --blue-dark: #b4cee5;
-  --yellow: #e4c873;
-  --coral: #e98269;
-  --mint: #2a3836;
-  --field: #20282b;
-  --navy: #0f1b28;
-  --header-bg: rgba(23, 27, 29, .92);
-  --header-line: rgba(104, 116, 119, .5);
-  --body-soft: #c0c9c1;
-  --inverse: #f1f5ee;
-  --on-ink: #171b1d;
+  --canvas: #0e1a1e;
+  --paper: #15292e;
+  --ink: #effcfa;
+  --muted: #96b1b4;
+  --line: #2a454a;
+  --cyan: #5fe0e4;
+  --cyan-deep: #92eef0;
+  --blue: var(--cyan);
+  --blue-dark: var(--cyan-deep);
+  --yellow: #e8cf73;
+  --coral: #ed836a;
+  --mint: #1e3c3d;
+  --field: #142a2e;
+  --navy: #082733;
+  --header-bg: rgba(14, 26, 30, .92);
+  --header-line: rgba(95, 224, 228, .3);
+  --body-soft: #c0d5d4;
+  --inverse: #f1fffd;
+  --on-ink: #08171a;
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --canvas: #171b1d;
-    --paper: #22282b;
-    --ink: #eef2eb;
-    --muted: #a8b0aa;
-    --line: #394247;
-    --blue: #8db2d4;
-    --blue-dark: #b4cee5;
-    --yellow: #e4c873;
-    --coral: #e98269;
-    --mint: #2a3836;
-    --field: #20282b;
-    --navy: #0f1b28;
-    --header-bg: rgba(23, 27, 29, .92);
-    --header-line: rgba(104, 116, 119, .5);
-    --body-soft: #c0c9c1;
-    --inverse: #f1f5ee;
-    --on-ink: #171b1d;
+    --canvas: #0e1a1e;
+    --paper: #15292e;
+    --ink: #effcfa;
+    --muted: #96b1b4;
+    --line: #2a454a;
+    --cyan: #5fe0e4;
+    --cyan-deep: #92eef0;
+    --blue: var(--cyan);
+    --blue-dark: var(--cyan-deep);
+    --yellow: #e8cf73;
+    --coral: #ed836a;
+    --mint: #1e3c3d;
+    --field: #142a2e;
+    --navy: #082733;
+    --header-bg: rgba(14, 26, 30, .92);
+    --header-line: rgba(95, 224, 228, .3);
+    --body-soft: #c0d5d4;
+    --inverse: #f1fffd;
+    --on-ink: #08171a;
     color-scheme: dark;
   }
 }
@@ -77,7 +85,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: var(--header-offset);
   background: var(--canvas);
 }
 
@@ -90,8 +98,8 @@ body {
 }
 
 ::selection {
-  background: var(--yellow);
-  color: var(--ink);
+  background: var(--cyan);
+  color: var(--on-ink);
 }
 
 a {
@@ -171,7 +179,7 @@ a {
   place-items: center;
   border: 1px solid var(--ink);
   border-radius: 9px 5px 9px 5px;
-  background: var(--yellow);
+  background: var(--cyan);
   color: var(--ink);
   font-family: "DM Mono", ui-monospace, monospace;
   font-size: .73rem;
@@ -202,6 +210,7 @@ a {
 
 .main-nav a,
 .social-link {
+  position: relative;
   color: var(--muted);
   font-size: .72rem;
   letter-spacing: .05em;
@@ -214,6 +223,24 @@ a {
 .social-link:hover,
 .social-link:focus-visible {
   color: var(--blue);
+}
+
+.main-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -.3rem;
+  left: 0;
+  height: 2px;
+  background: var(--cyan);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms var(--ease-out);
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .header-socials {
@@ -307,7 +334,7 @@ a {
   margin-right: .55rem;
   border: 1px solid currentColor;
   border-radius: 2px;
-  background: var(--coral);
+  background: var(--cyan);
   content: "";
   vertical-align: -.04rem;
   transform: rotate(4deg);
@@ -331,6 +358,56 @@ h1 {
   font-size: clamp(3.5rem, 7.9vw, 6.4rem);
   font-weight: 600;
   line-height: .91;
+}
+
+.typing-text {
+  display: inline;
+}
+
+.typing-caret {
+  display: inline-block;
+  width: .09em;
+  height: .78em;
+  margin-left: .12em;
+  background: var(--cyan);
+  vertical-align: -.04em;
+  animation: caret-blink 900ms steps(1, end) infinite;
+}
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 560ms var(--ease-out), transform 560ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .recipe-card[data-reveal] {
+  transform: translateY(14px) rotate(-1deg);
+}
+
+html.js .recipe-card[data-reveal].is-visible {
+  transform: rotate(-1deg);
+}
+
+body.is-ready .brand-mark {
+  animation: mark-arrive 520ms var(--ease-out) both;
+}
+
+body.is-ready .hero-copy {
+  animation: hero-copy-in 640ms var(--ease-out) both;
+}
+
+body.is-ready .hero-note {
+  animation: note-arrive 720ms var(--ease-out) 90ms both;
+}
+
+body.is-ready .hero-footnote {
+  animation: footnote-in 520ms var(--ease-out) 260ms both;
 }
 
 .hero-lede {
@@ -388,7 +465,7 @@ h1 {
   bottom: -.35rem;
   left: 0;
   height: 2px;
-  background: var(--yellow);
+  background: var(--cyan);
   content: "";
   transform: scaleX(.25);
   transform-origin: left;
@@ -408,8 +485,27 @@ h1 {
   border-radius: 10px 20px 10px 15px;
   background: var(--navy);
   color: var(--inverse);
-  box-shadow: 8px 8px 0 var(--coral);
+  box-shadow: 8px 8px 0 var(--cyan);
   transform: rotate(.9deg);
+}
+
+.hero-note::before {
+  position: absolute;
+  top: -10rem;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 16px var(--cyan);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  animation: note-scan 5.5s ease-in-out 1.4s 3;
+}
+
+.hero-note > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-note::after {
@@ -461,7 +557,7 @@ h1 {
 
 .note-screen-label {
   margin-bottom: .8rem;
-  color: var(--yellow);
+  color: var(--cyan);
   font-family: "DM Mono", ui-monospace, monospace;
   font-size: .68rem;
   letter-spacing: .08em;
@@ -564,6 +660,7 @@ h2 {
   position: absolute;
   inset: 0;
   padding: 1.25rem;
+  transition: transform 360ms var(--ease-out);
 }
 
 .project-art--database {
@@ -782,7 +879,7 @@ h2 {
   margin-right: .4rem;
   border: 1px solid currentColor;
   border-radius: 50%;
-  background: var(--yellow);
+  background: var(--cyan);
   content: "";
   vertical-align: .02rem;
 }
@@ -903,7 +1000,7 @@ h2 {
   border: 1px solid var(--ink);
   border-radius: 6px 16px 6px 10px;
   background: var(--paper);
-  box-shadow: 6px 6px 0 var(--coral);
+  box-shadow: 6px 6px 0 var(--cyan);
   transform: rotate(-1deg);
 }
 
@@ -971,6 +1068,7 @@ h2 {
 }
 
 .contact-link {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -980,7 +1078,20 @@ h2 {
   font-family: "DM Mono", ui-monospace, monospace;
   font-size: .77rem;
   text-decoration: none;
-  transition: color 160ms ease-out, padding 160ms var(--ease-out);
+  transition: color 160ms ease-out;
+}
+
+.contact-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--cyan);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease-out);
 }
 
 .contact-link__lead {
@@ -1003,7 +1114,6 @@ h2 {
 }
 
 .contact-link:focus-visible {
-  padding-right: .35rem;
   color: var(--blue);
 }
 
@@ -1011,6 +1121,13 @@ h2 {
   color: var(--muted);
   font-family: "Noto Sans JP", ui-sans-serif, sans-serif;
   font-size: .82rem;
+}
+
+.button:active,
+.social-link:active,
+.theme-toggle:active,
+.back-to-top:active {
+  transform: scale(.97);
 }
 
 .about-person {
@@ -1089,7 +1206,7 @@ h2 {
 }
 
 .back-to-top span {
-  color: var(--coral);
+  color: var(--cyan);
   font-size: 1rem;
 }
 
@@ -1110,6 +1227,80 @@ h2 {
   background: var(--paper);
 }
 
+@keyframes caret-blink {
+  0%, 44% {
+    opacity: 1;
+  }
+
+  45%, 100% {
+    opacity: .15;
+  }
+}
+
+@keyframes mark-arrive {
+  from {
+    opacity: 0;
+    transform: rotate(-15deg) scale(.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-5deg) scale(1);
+  }
+}
+
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes note-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(3deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(.9deg);
+  }
+}
+
+@keyframes footnote-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes note-scan {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  18%, 76% {
+    opacity: .6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(28rem);
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .button--primary:hover {
     background: var(--blue);
@@ -1121,8 +1312,12 @@ h2 {
   }
 
   .project-card:hover {
-    border-color: rgba(68, 100, 143, .45);
-    box-shadow: 5px 5px 0 rgba(38, 37, 32, .1);
+    border-color: var(--cyan);
+    box-shadow: 5px 5px 0 rgba(18, 185, 199, .22);
+  }
+
+  .project-card:hover .project-art {
+    transform: scale(1.015);
   }
 
   .project-link:hover span {
@@ -1131,6 +1326,11 @@ h2 {
 
   .contact-link:hover {
     color: var(--blue);
+  }
+
+  .contact-link:hover::after,
+  .contact-link:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .about-person:hover > span:last-child {
@@ -1143,6 +1343,10 @@ h2 {
 }
 
 @media (max-width: 820px) {
+  :root {
+    --header-offset: 6.25rem;
+  }
+
   .header-inner {
     grid-template-columns: minmax(0, 1fr) auto;
   }
@@ -1241,7 +1445,7 @@ h2 {
 
   .hero-note {
     min-height: 17rem;
-    box-shadow: 6px 6px 0 var(--coral);
+    box-shadow: 6px 6px 0 var(--cyan);
   }
 
   .note-screen {
@@ -1344,6 +1548,38 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html.js .recipe-card[data-reveal] {
+    transform: rotate(-1deg);
+  }
+
+  .typing-caret {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-note::before,
+  body.is-ready .brand-mark,
+  body.is-ready .hero-copy,
+  body.is-ready .hero-note,
+  body.is-ready .hero-footnote {
+    animation: none;
+  }
+
+  .project-card:hover .project-art,
+  .contact-link::after,
+  .button:active,
+  .social-link:active,
+  .theme-toggle:active,
+  .back-to-top:active {
+    transform: none;
   }
 
   *,

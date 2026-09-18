@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   var text = function (selector, value) {
     var node = document.querySelector(selector);
     if (node && value !== undefined && value !== null) {
@@ -39,6 +41,90 @@
     }
   };
 
+  var prefersReducedMotion = function () {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  };
+
+  var typeHeroTitle = function (value) {
+    var node = document.querySelector('[data-text="hero.title"]');
+    if (!node) return;
+    var typed = node.querySelector(".typing-text");
+    node.setAttribute("aria-label", String(value));
+    if (!typed) {
+      node.textContent = String(value);
+      return;
+    }
+
+    if (prefersReducedMotion()) {
+      typed.textContent = String(value);
+      node.classList.add("is-typed");
+      return;
+    }
+
+    typed.textContent = "";
+    node.classList.add("is-typing");
+    var index = 0;
+    var write = function () {
+      typed.textContent = String(value).slice(0, index);
+      if (index >= String(value).length) {
+        node.classList.remove("is-typing");
+        node.classList.add("is-typed");
+        return;
+      }
+      index += 1;
+      window.setTimeout(write, String(value).charAt(index - 1) === " " ? 24 : 42);
+    };
+    window.setTimeout(write, 180);
+  };
+
+  var revealAll = function () {
+    var nodes = document.querySelectorAll("[data-reveal]");
+    Array.prototype.forEach.call(nodes, function (node) {
+      node.classList.add("is-visible");
+    });
+  };
+
+  var initReveals = function () {
+    var nodes = document.querySelectorAll("[data-reveal]");
+    if (!nodes.length || prefersReducedMotion()) {
+      revealAll();
+      return;
+    }
+
+    Array.prototype.forEach.call(nodes, function (node, index) {
+      node.style.setProperty("--reveal-delay", Math.min(index * 55, 220) + "ms");
+    });
+
+    var ticking = false;
+    var check = function () {
+      if (ticking) return;
+      ticking = true;
+      window.setTimeout(function () {
+        var remaining = 0;
+        Array.prototype.forEach.call(nodes, function (node) {
+          if (node.classList.contains("is-visible")) return;
+          var bounds = node.getBoundingClientRect();
+          if (bounds.top < window.innerHeight * .9 && bounds.bottom > -40) {
+            node.classList.add("is-visible");
+          } else {
+            remaining += 1;
+          }
+        });
+        ticking = false;
+        if (!remaining) {
+          window.removeEventListener("scroll", check);
+          document.removeEventListener("scroll", check);
+          window.removeEventListener("resize", check);
+        }
+      }, 16);
+    };
+
+    window.addEventListener("scroll", check, { passive: true });
+    document.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    check();
+  };
+
   var applyTheme = function (theme) {
     var nextTheme = theme === "dark" ? "dark" : "light";
     var isDark = nextTheme === "dark";
@@ -57,7 +143,7 @@
     if (label) label.textContent = labelText;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = isDark ? "#171b1d" : "#f4f3ee";
+    if (themeColor) themeColor.content = isDark ? "#0e1a1e" : "#f3f7f6";
   };
 
   var initTheme = function () {
@@ -254,7 +340,6 @@
     if (description) description.content = content.site.description;
 
     text('[data-text="site.profile.label"]', content.site.profile && content.site.profile.label);
-    setLink('[data-link="site.profile"]', content.site.profile);
     renderSocials(content.socials);
 
     Object.keys(content.nav || {}).forEach(function (key) {
@@ -265,7 +350,7 @@
     });
 
     text('[data-text="hero.eyebrow"]', content.hero.eyebrow);
-    text('[data-text="hero.title"]', content.hero.title);
+    typeHeroTitle(content.hero.title);
     text('[data-text="hero.body"]', content.hero.body);
     text('[data-text="hero.noteLabel"]', content.hero.noteLabel);
     text('[data-text="hero.noteTitle"]', content.hero.noteTitle);
@@ -316,6 +401,7 @@
     text('[data-text="footer.middle"]', content.footer.middle);
     setLink('[data-link="footer.kofi"]', content.contact.kofi);
 
+    initReveals();
     document.body.classList.add("is-ready");
   };
 
@@ -331,6 +417,7 @@
       if (target) {
         target.textContent = "The editable content file could not be loaded. Run a local web server and try again.";
       }
+      revealAll();
       console.error(error);
     });
 }());
