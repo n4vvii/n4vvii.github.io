@@ -659,7 +659,7 @@ h2 {
 
 .project-list {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.15rem;
   align-items: stretch;
 }
@@ -679,11 +679,11 @@ h2 {
 }
 
 .project-card:first-child {
-  grid-column: span 7;
+  grid-column: span 1;
 }
 
 .project-card:nth-child(2) {
-  grid-column: span 5;
+  grid-column: span 1;
 }
 
 .project-media {
@@ -771,6 +771,7 @@ h2 {
 
 .art-table-row {
   display: grid;
+  flex: 1;
   grid-template-columns: 1fr .55fr .55fr;
   align-items: center;
   gap: .75rem;
@@ -790,6 +791,13 @@ h2 {
 
 .art-table-row span:nth-child(n+2) {
   text-align: right;
+}
+
+.art-table-row span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .project-art--calculator {
@@ -937,7 +945,6 @@ h2 {
 .project-card h3 {
   margin: 0 0 .65rem;
   min-width: 0;
-  min-height: 2.16em;
   font-family: "Zen Kaku Gothic New", "Noto Sans JP", ui-sans-serif, sans-serif;
   font-size: clamp(1.8rem, 3.1vw, 2.7rem);
   font-weight: 600;
@@ -1514,9 +1521,19 @@ h2 {
   }
 
   .project-card h3 {
-    min-height: 2.32em;
     font-size: clamp(1.3rem, 6.4vw, 1.75rem);
     line-height: 1.16;
+  }
+
+  .art-window-bar {
+    font-size: .56rem;
+  }
+
+  .art-table-row {
+    grid-template-columns: 1fr .72fr .58fr;
+    gap: .3rem;
+    padding: 0 .35rem;
+    font-size: .52rem;
   }
 
   .project-description {
