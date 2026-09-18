@@ -16,6 +16,9 @@
   --navy: #163d4b;
   --header-bg: rgba(243, 247, 246, .34);
   --header-control-bg: #fcfffe;
+  --badge-bg: rgba(18, 185, 199, .08);
+  --badge-border: rgba(4, 120, 132, .34);
+  --badge-text: #047884;
   --header-line: rgba(182, 211, 210, .62);
   --header-shadow: rgba(23, 40, 45, .08);
   --body-soft: #4b6267;
@@ -50,6 +53,9 @@
   --navy: #082733;
   --header-bg: rgba(0, 0, 0, .34);
   --header-control-bg: #0c1b20;
+  --badge-bg: rgba(95, 224, 228, .1);
+  --badge-border: rgba(95, 224, 228, .34);
+  --badge-text: #92eef0;
   --header-line: rgba(95, 224, 228, .42);
   --header-shadow: rgba(0, 0, 0, .72);
   --body-soft: #c0d5d4;
@@ -76,6 +82,9 @@
     --navy: #082733;
     --header-bg: rgba(0, 0, 0, .34);
     --header-control-bg: #0c1b20;
+    --badge-bg: rgba(95, 224, 228, .1);
+    --badge-border: rgba(95, 224, 228, .34);
+    --badge-text: #92eef0;
     --header-line: rgba(95, 224, 228, .42);
     --header-shadow: rgba(0, 0, 0, .72);
     --body-soft: #c0d5d4;
@@ -652,10 +661,12 @@ h2 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.15rem;
+  align-items: stretch;
 }
 
 .project-card {
   display: flex;
+  height: 100%;
   min-width: 0;
   flex-direction: column;
   position: relative;
@@ -677,12 +688,14 @@ h2 {
 
 .project-media {
   position: relative;
-  min-height: 18rem;
+  width: 100%;
+  aspect-ratio: 1.45 / 1;
+  min-height: 0;
   overflow: hidden;
 }
 
 .project-card:nth-child(2) .project-media {
-  min-height: 15rem;
+  min-height: 0;
 }
 
 .project-art {
@@ -877,33 +890,82 @@ h2 {
   display: flex;
   flex: 1;
   flex-direction: column;
+  min-width: 0;
   min-height: 15.5rem;
   padding: 1.35rem;
 }
 
 .project-stack {
-  margin: 0 0 .8rem;
-  color: var(--blue-dark);
-  font-size: .72rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem .5rem;
+  min-width: 0;
+  margin: auto 0 0;
+  color: var(--muted);
+  font-size: .64rem;
   letter-spacing: .04em;
   line-height: 1.45;
 }
 
+.project-stack-label {
+  white-space: nowrap;
+}
+
+.project-stack-badges {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.project-badge {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  padding: .22rem .5rem;
+  border: 1px solid var(--badge-border);
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: .64rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
 .project-card h3 {
   margin: 0 0 .65rem;
+  min-width: 0;
+  min-height: 2.16em;
   font-family: "Zen Kaku Gothic New", "Noto Sans JP", ui-sans-serif, sans-serif;
   font-size: clamp(1.8rem, 3.1vw, 2.7rem);
   font-weight: 600;
   letter-spacing: -.065em;
-  line-height: 1;
+  line-height: 1.08;
+}
+
+.project-card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .project-description {
   max-width: 34rem;
+  min-width: 0;
+  min-height: calc(1.72em * 3);
   margin-bottom: 0;
   color: var(--muted);
   font-size: .95rem;
   line-height: 1.72;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .project-card-link {
@@ -1424,7 +1486,8 @@ h2 {
 
   .project-media,
   .project-card:nth-child(2) .project-media {
-    min-height: 11.5rem;
+    aspect-ratio: 1.15 / 1;
+    min-height: 0;
   }
 
   .project-art {
@@ -1432,20 +1495,32 @@ h2 {
   }
 
   .project-content {
-    min-height: 14rem;
-    padding: .9rem;
+    min-height: 14.25rem;
+    padding: .8rem;
   }
 
   .project-stack {
-    margin-bottom: .65rem;
-    font-size: .59rem;
+    gap: .35rem;
+    font-size: .56rem;
+  }
+
+  .project-stack-badges {
+    gap: .28rem;
+  }
+
+  .project-badge {
+    padding: .18rem .38rem;
+    font-size: .56rem;
   }
 
   .project-card h3 {
-    font-size: clamp(1.4rem, 7vw, 1.9rem);
+    min-height: 2.32em;
+    font-size: clamp(1.3rem, 6.4vw, 1.75rem);
+    line-height: 1.16;
   }
 
   .project-description {
+    min-height: calc(1.58em * 3);
     font-size: .78rem;
     line-height: 1.58;
   }
