@@ -226,6 +226,10 @@ a {
   transition: color 160ms ease-out;
 }
 
+.main-nav a {
+  font-size: .84rem;
+}
+
 .main-nav a:hover,
 .main-nav a:focus-visible,
 .social-link:hover,
@@ -1185,7 +1189,7 @@ h2 {
   flex-wrap: wrap;
   gap: .75rem 1.5rem;
   color: var(--muted);
-  font-size: .8rem;
+  font-size: .9rem;
   letter-spacing: .04em;
 }
 
@@ -1365,8 +1369,9 @@ h2 {
   .main-nav {
     grid-column: 1 / -1;
     grid-row: 2;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
+    gap: 1.4rem;
     padding: .7rem 0 .85rem;
     border-top: 1px solid var(--line);
   }
@@ -1429,8 +1434,16 @@ h2 {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --header-offset: 6.8rem;
+  }
+
   .container {
     width: min(var(--max-width), calc(100% - 1.5rem));
+  }
+
+  .site-header {
+    padding-top: .5rem;
   }
 
   .header-inner {
@@ -1439,6 +1452,10 @@ h2 {
 
   .header-socials {
     gap: .65rem;
+  }
+
+  .main-nav a {
+    font-size: .72rem;
   }
 
   .social-link {
@@ -1452,6 +1469,7 @@ h2 {
   h1 {
     max-width: 8.5ch;
     font-size: clamp(3.25rem, 15vw, 5rem);
+    line-height: .98;
   }
 
   .hero-note {
@@ -1480,6 +1498,10 @@ h2 {
 
   .section {
     --section-top-space: 5rem;
+  }
+
+  .projects-section {
+    padding-bottom: 6rem;
   }
 
   h2 {
@@ -1547,12 +1569,18 @@ h2 {
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
+    gap: 1.5rem;
   }
 
   .footer-copy {
+    width: 100%;
     align-items: flex-start;
     flex-direction: column;
-    gap: .55rem;
+    gap: .7rem;
+  }
+
+  .back-to-top {
+    align-self: flex-start;
   }
 }
 

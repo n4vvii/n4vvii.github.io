@@ -61,6 +61,20 @@
       return;
     }
 
+    var reserveTitleSpace = function () {
+      var currentText = typed.textContent;
+      node.style.minHeight = "0px";
+      typed.textContent = String(value);
+      var fullHeight = node.getBoundingClientRect().height;
+      typed.textContent = currentText;
+      node.style.minHeight = Math.ceil(fullHeight) + "px";
+    };
+
+    reserveTitleSpace();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(reserveTitleSpace);
+    }
+
     typed.textContent = "";
     node.classList.add("is-typing");
     var index = 0;
