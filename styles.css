@@ -593,7 +593,9 @@ body.is-ready .hero-footnote {
 }
 
 .section {
-  padding: clamp(5rem, 11vw, 9rem) 0 0;
+  --section-top-space: clamp(5rem, 11vw, 9rem);
+  padding: var(--section-top-space) 0 0;
+  scroll-margin-top: calc(-1 * var(--section-top-space));
 }
 
 .section-heading {
@@ -1040,6 +1042,7 @@ h2 {
 }
 
 .contact-section {
+  min-height: calc(100vh - var(--header-offset));
   padding-bottom: clamp(5rem, 11vw, 9rem);
 }
 
@@ -1468,7 +1471,7 @@ h2 {
   }
 
   .section {
-    padding-top: 5rem;
+    --section-top-space: 5rem;
   }
 
   h2 {
