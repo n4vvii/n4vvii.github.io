@@ -20,7 +20,7 @@
 
 ## 作品を追加・変更するとき
 
-projects の中の1つのオブジェクトが1作品です。title、description、stack、link を変更すれば、作品カードの内容が変わります。カードの文言は日本語、それ以外（見出し・About・フッター・ナビなど）は英語です。カード全体が link のURLを開くリンクです。
+projects の中の1つのオブジェクトが1作品です。title、description、stack、link を変更すれば、作品カードの内容が変わります。stack はサムネイル直下に通常の文字で表示され、複数の技術は `SwiftUI / iOS` のように「 / 」区切りでそのまま記載します。カードの文言は日本語、それ以外（見出し・About・フッター・ナビなど）は英語です。カード全体が link のURLを開くリンクです。
 
 visual は現在 database と calculator に対応しています。見た目の種類を増やす場合だけ、HTML/CSS/JavaScriptの変更が必要です。
 

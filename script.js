@@ -367,6 +367,11 @@
     media.appendChild(renderVisual(project.visual));
     article.appendChild(media);
 
+    var stack = create("p", "project-stack");
+    stack.appendChild(create("span", "sr-only", "使用技術: "));
+    stack.appendChild(document.createTextNode(String(project.stack || "")));
+    article.appendChild(stack);
+
     var content = create("div", "project-content");
 
     var title = create("h3", "");
@@ -384,23 +389,6 @@
     content.appendChild(title);
     content.appendChild(create("p", "project-description", project.description));
 
-    var stackItems = String(project.stack || "")
-      .split(/\s*(?:\/|,|、|\|)\s*/)
-      .map(function (item) { return item.trim(); })
-      .filter(function (item) { return item.length > 0; });
-    var stack = create("div", "project-stack");
-    stack.setAttribute("role", "group");
-    stack.setAttribute("aria-label", "使用技術: " + (stackItems.length ? stackItems.join(", ") : "記載なし"));
-    var stackLabel = create("span", "project-stack-label", "使用技術");
-    stackLabel.setAttribute("aria-hidden", "true");
-    stack.appendChild(stackLabel);
-    var badgeList = create("span", "project-stack-badges");
-    badgeList.setAttribute("aria-hidden", "true");
-    stackItems.forEach(function (item) {
-      badgeList.appendChild(create("span", "project-badge", item));
-    });
-    stack.appendChild(badgeList);
-    content.appendChild(stack);
     article.appendChild(content);
     article.setAttribute("aria-label", "作品" + (index + 1) + ": " + project.title);
     return article;
