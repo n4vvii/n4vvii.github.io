@@ -12,7 +12,7 @@
 | socials | ヘッダーのGitHub・Xアイコンの表示名とURL |
 | hero | トップの見出し、説明、ボタン、右側のメモ |
 | projectsSection | 作品セクションの見出しと説明 |
-| projects | 作品名、状態、説明、リンク、タグ、作品ごとの短いキャプション |
+| projects | 作品名、短い説明、使用技術、リンク |
 | about | プロフィールと右側のメモ |
 | contact.links | X・GitHubの表示名、説明、URL、アイコン |
 | contact.kofi | フッターのKo-fiリンク |
@@ -20,7 +20,7 @@
 
 ## 作品を追加・変更するとき
 
-projects の中の1つのオブジェクトが1作品です。title、description、link、linkLabel、tags を変更すれば、作品カードの内容が変わります。
+projects の中の1つのオブジェクトが1作品です。title、description、stack、link、linkLabel を変更すれば、作品カードの内容が変わります。現在、作品カード内の表示文は日本語にしています。
 
 visual は現在 database と calculator に対応しています。見た目の種類を増やす場合だけ、HTML/CSS/JavaScriptの変更が必要です。
 

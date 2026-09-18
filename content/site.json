@@ -37,28 +37,20 @@
   },
   "projects": [
     {
-      "status": "live",
-      "statusLabel": "live on the web",
-      "category": "web / database",
+      "stack": "Web",
       "title": "Ninedbase",
-      "description": "A player database for Prospi A. Search, browse, and enjoy the numbers without taking it too seriously.",
+      "description": "プロスピAの選手データベース。選手情報を検索・閲覧できます。",
       "link": "https://ninedbase.n4vvii.com/",
-      "linkLabel": "Open Ninedbase",
-      "visual": "database",
-      "caption": "a little database, made out of a lot of curiosity",
-      "tags": ["Prospi A", "web tool", "just for fun"]
+      "linkLabel": "Ninedbaseを見る",
+      "visual": "database"
     },
     {
-      "status": "wip",
-      "statusLabel": "still making it",
-      "category": "iOS / SwiftUI",
-      "title": "Unit Price Comparator",
-      "description": "A small SwiftUI app for the eternal supermarket question: which one is actually cheaper?",
+      "stack": "SwiftUI / iOS",
+      "title": "単価比較アプリ",
+      "description": "商品の価格と内容量を比べて、どちらが安いか確認するアプリ。",
       "link": "https://github.com/n4vvii",
-      "linkLabel": "See what else is happening",
-      "visual": "calculator",
-      "caption": "currently somewhere between idea and app",
-      "tags": ["SwiftUI", "iOS", "work in progress"]
+      "linkLabel": "GitHubを見る",
+      "visual": "calculator"
     }
   ],
   "about": {
@@ -66,7 +58,8 @@
     "title": "No master plan. Just a lot of tabs.",
     "paragraphs": [
       "I'm n4vvii, making small things in Japan with Vibe Coding. I turn vague ideas into things I can click, share, or keep tinkering with.",
-      "This page is less of a résumé and more of a small window into that process. If something here makes you curious, that's probably enough. Thanks for making it all the way to the end."
+      "This page is less of a résumé and more of a small window into that process. If something here makes you curious, that's probably enough.",
+      "Thanks for making it all the way to the end."
     ],
     "calloutLabel": "the recipe",
     "calloutLines": [

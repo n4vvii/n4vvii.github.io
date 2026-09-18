@@ -256,13 +256,13 @@
     if (visual === "calculator") {
       var calculator = create("div", "project-art project-art--calculator");
       var paper = create("div", "calculator-paper");
-      paper.appendChild(create("span", "calculator-label", "unit price / quick check"));
+      paper.appendChild(create("span", "calculator-label", "単価を比較"));
       var display = create("div", "calculator-display");
       display.appendChild(create("strong", "", "¥ / ?"));
-      display.appendChild(create("span", "", "which one"));
+      display.appendChild(create("span", "", "どちらが安い？"));
       paper.appendChild(display);
       var rows = create("div", "calculator-rows");
-      ["small bag", "big bag", "the one on sale"].forEach(function (label) {
+      ["少ない容量", "多い容量", "特売の商品"].forEach(function (label) {
         var row = create("div", "calculator-row");
         row.appendChild(create("span", "", label));
         row.appendChild(create("i", "", ""));
@@ -276,18 +276,18 @@
     var database = create("div", "project-art project-art--database");
     var windowBar = create("div", "art-window-bar");
     for (var i = 0; i < 3; i += 1) windowBar.appendChild(create("i", "", ""));
-    windowBar.appendChild(create("span", "", "ninedbase / player database"));
+    windowBar.appendChild(create("span", "", "ninedbase / 選手データベース"));
     database.appendChild(windowBar);
     var query = create("div", "art-query");
-    query.appendChild(create("span", "", "search players..."));
+    query.appendChild(create("span", "", "選手を検索..."));
     query.appendChild(create("b", "", "↗"));
     database.appendChild(query);
     var table = create("div", "art-table");
     [
-      ["PLAYER", "SERIES", "MOOD"],
-      ["someone fast", "S1", "good"],
-      ["someone cool", "S2", "nice"],
-      ["someone clutch", "S3", "wow"]
+      ["選手", "シリーズ", "メモ"],
+      ["選手A", "S1", "好調"],
+      ["選手B", "S2", "注目"],
+      ["選手C", "S3", "記録"]
     ].forEach(function (rowData) {
       var row = create("div", "art-table-row");
       rowData.forEach(function (cell) {
@@ -308,38 +308,24 @@
     article.appendChild(media);
 
     var content = create("div", "project-content");
-    var meta = create("div", "project-meta");
-    meta.appendChild(create("span", "project-category", project.category));
-    meta.appendChild(create("span", "project-status" + (project.status === "wip" ? " project-status--wip" : ""), project.statusLabel));
-    content.appendChild(meta);
+    content.appendChild(create("p", "project-stack", project.stack));
 
-    var title = create("h3", "");
-    var titleLink = create("a", "", project.title);
-    titleLink.href = safeUrl(project.link);
-    titleLink.target = "_blank";
-    titleLink.rel = "noopener";
-    title.appendChild(titleLink);
-    content.appendChild(title);
+    content.appendChild(create("h3", "", project.title));
     content.appendChild(create("p", "project-description", project.description));
 
-    var bottom = create("div", "project-bottom");
-    var tags = create("div", "project-tags");
-    (project.tags || []).forEach(function (tag) {
-      tags.appendChild(create("span", "project-tag", tag));
-    });
-    bottom.appendChild(tags);
-
-    var projectLink = create("a", "project-link", "");
-    projectLink.href = safeUrl(project.link);
-    projectLink.target = "_blank";
-    projectLink.rel = "noopener";
-    projectLink.appendChild(document.createTextNode(project.linkLabel + " "));
-    projectLink.appendChild(create("span", "", "↗"));
-    bottom.appendChild(projectLink);
-    content.appendChild(bottom);
-    content.appendChild(create("p", "project-caption", project.caption));
+    var projectFooter = create("div", "project-footer");
+    if (project.link) {
+      var projectLink = create("a", "project-link", "");
+      projectLink.href = safeUrl(project.link);
+      projectLink.target = "_blank";
+      projectLink.rel = "noopener";
+      projectLink.appendChild(document.createTextNode(project.linkLabel || "見る"));
+      projectLink.appendChild(create("span", "", "↗"));
+      projectFooter.appendChild(projectLink);
+    }
+    content.appendChild(projectFooter);
     article.appendChild(content);
-    article.setAttribute("aria-label", "Project " + (index + 1) + ": " + project.title);
+    article.setAttribute("aria-label", "作品" + (index + 1) + ": " + project.title);
     return article;
   };
 
