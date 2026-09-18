@@ -13,7 +13,7 @@
 | hero | トップの見出し、説明、ボタン、右側のメモ |
 | projectsSection | 作品セクションの見出しと説明 |
 | projects | 作品名、状態、説明、リンク、タグ、作品ごとの短いキャプション |
-| about | プロフィール、GitHubリンク、右側のメモ |
+| about | プロフィールと右側のメモ |
 | contact.links | X・GitHubの表示名、説明、URL、アイコン |
 | contact.kofi | フッターのKo-fiリンク |
 | footer | フッターの文言 |

@@ -400,8 +400,6 @@
     }
 
     text('[data-text="about.eyebrow"]', content.about.eyebrow);
-    text('[data-text="about.profile.label"]', content.about.profile && content.about.profile.label);
-    setLink('[data-link="about.profile"]', content.about.profile);
     text('[data-text="about.title"]', content.about.title);
     text('[data-text="about.calloutLabel"]', content.about.calloutLabel);
     text('[data-text="about.calloutNote"]', content.about.calloutNote);
