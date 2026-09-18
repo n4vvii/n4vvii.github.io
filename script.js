@@ -236,7 +236,7 @@
     if (label) label.textContent = labelText;
 
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = isDark ? "#000000" : "#f3f7f6";
+    if (themeColor) themeColor.content = isDark ? "#121721" : "#f4f5f7";
   };
 
   var initTheme = function () {
