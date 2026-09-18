@@ -1,10 +1,10 @@
 # 公開手順
 
-このリポジトリはビルド不要の静的サイトです。Cloudflare Pagesの公開対象はリポジトリ直下の . です。**ポートフォリオ本体（Pages）はこの作業ではデプロイしていません。**
+このリポジトリはビルド不要の静的サイトです。Cloudflare Pagesの公開対象はリポジトリ直下の . です。現在の本番URLは https://n4vvii.com/ 、Pagesの既定URLは https://n4vvii-portfolio.pages.dev/ です。
 
 ## 問い合わせWorker（先に作成済み）
 
-フォーム送信先は `contact-worker/` のCloudflare Workerです。静的ポートフォリオとは別に、D1へ問い合わせを保存します。Workerのデプロイは許可済みですが、ポートフォリオ本体（Pages）のデプロイやGitHubへのpushは引き続きユーザー確認後に行います。
+フォーム送信先は `contact-worker/` のCloudflare Workerです。静的ポートフォリオとは別に、D1へ問い合わせを保存します。WorkerとPagesの初回デプロイ、`n4vvii.com` の接続は完了しています。
 
     cd /Users/na/Master/Portfolio/n4vvii.github.io/contact-worker
     wrangler d1 execute n4vvii-contact --remote --file schema/0001_initial.sql
@@ -21,7 +21,7 @@ Turnstile Widgetには `n4vvii.com` と `www.n4vvii.com` を許可済みです�
     cd /Users/na/Master/Portfolio/n4vvii.github.io/contact-worker
     node admin/admin-server.mjs
 
-以下は、ドメイン購入と内容確認が終わったあとに上から順番に実行する手順です。
+以下は、新規環境で同じ構成を作る場合、または公開内容を更新する場合の手順です。
 
 ## 1. ドメインを用意する
 
