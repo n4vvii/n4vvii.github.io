@@ -206,7 +206,12 @@
 
   var alignHashTarget = function () {
     var targetId = window.location.hash.slice(1);
-    if (!targetId || targetId === "top") return;
+    if (!targetId || targetId === "top") {
+      if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
+        window.history.replaceState(null, "", "/");
+      }
+      return;
+    }
 
     var target = document.getElementById(targetId);
     if (!target || !target.matches("main > .section[id]")) return;
@@ -216,6 +221,23 @@
     root.style.scrollBehavior = "auto";
     target.scrollIntoView({ block: "start", behavior: "auto" });
     root.style.scrollBehavior = previousBehavior;
+    if (window.location.pathname === "/") window.history.replaceState(null, "", "/");
+  };
+
+  var initCanonicalScrollLinks = function () {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (link) {
+      if (link.dataset.canonicalScrollReady) return;
+      link.dataset.canonicalScrollReady = "true";
+      link.addEventListener("click", function (event) {
+        var targetId = link.getAttribute("href").slice(1);
+        var target = document.getElementById(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ block: "start", behavior: "smooth" });
+        if (window.location.pathname === "/") window.history.replaceState(null, "", "/");
+      });
+    });
   };
 
   var applyTheme = function (theme) {
@@ -619,6 +641,7 @@
     setLink('[data-link="footer.kofi"]', content.contact.kofi);
 
     initReveals();
+    initCanonicalScrollLinks();
     document.body.classList.add("is-ready");
     window.requestAnimationFrame(alignHashTarget);
     window.setTimeout(alignHashTarget, 240);
