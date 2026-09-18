@@ -379,8 +379,12 @@
     if (project.link) {
       var titleLink = create("a", "project-card-link");
       titleLink.href = safeUrl(project.link);
-      titleLink.target = "_blank";
-      titleLink.rel = "noopener";
+      if (project.download) {
+        titleLink.setAttribute("download", "PriceMemo.ipa");
+      } else {
+        titleLink.target = "_blank";
+        titleLink.rel = "noopener";
+      }
       titleLink.appendChild(titleText);
       title.appendChild(titleLink);
     } else {
