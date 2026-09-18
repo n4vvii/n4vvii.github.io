@@ -14,7 +14,8 @@
   --mint: #e3f0ed;
   --field: #e7f3f1;
   --navy: #163d4b;
-  --header-bg: #f3f7f6;
+  --header-bg: rgba(243, 247, 246, .34);
+  --header-control-bg: #fcfffe;
   --header-line: rgba(182, 211, 210, .62);
   --header-shadow: rgba(23, 40, 45, .08);
   --body-soft: #4b6267;
@@ -47,7 +48,8 @@
   --mint: #173b3c;
   --field: #10282d;
   --navy: #082733;
-  --header-bg: #000000;
+  --header-bg: rgba(0, 0, 0, .34);
+  --header-control-bg: #0c1b20;
   --header-line: rgba(95, 224, 228, .42);
   --header-shadow: rgba(0, 0, 0, .72);
   --body-soft: #c0d5d4;
@@ -72,7 +74,8 @@
     --mint: #173b3c;
     --field: #10282d;
     --navy: #082733;
-    --header-bg: #000000;
+    --header-bg: rgba(0, 0, 0, .34);
+    --header-control-bg: #0c1b20;
     --header-line: rgba(95, 224, 228, .42);
     --header-shadow: rgba(0, 0, 0, .72);
     --body-soft: #c0d5d4;
@@ -281,7 +284,7 @@ a {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: var(--header-bg);
+  background: var(--header-control-bg);
   color: var(--ink);
   transition: color 160ms ease-out, border-color 160ms ease-out, background-color 160ms ease-out;
 }
@@ -300,7 +303,7 @@ a {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: var(--header-bg);
+  background: var(--header-control-bg);
   color: var(--ink);
   cursor: pointer;
   font: inherit;

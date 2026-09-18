@@ -27,18 +27,8 @@
     }
   };
 
-  var themeStorageKey = "n4vvii-theme";
   var systemTheme = function () {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  };
-
-  var storedTheme = function () {
-    try {
-      var value = window.localStorage.getItem(themeStorageKey);
-      return value === "dark" || value === "light" ? value : "";
-    } catch (error) {
-      return "";
-    }
   };
 
   var prefersReducedMotion = function () {
@@ -250,22 +240,18 @@
   };
 
   var initTheme = function () {
-    var saved = storedTheme();
-    applyTheme(document.documentElement.getAttribute("data-theme") || saved || systemTheme());
+    applyTheme(systemTheme());
 
     var toggle = document.querySelector("[data-theme-toggle]");
     if (toggle) {
       toggle.addEventListener("click", function () {
         var current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         var next = current === "dark" ? "light" : "dark";
-        try {
-          window.localStorage.setItem(themeStorageKey, next);
-        } catch (error) {}
         applyTheme(next);
       });
     }
 
-    if (!saved && window.matchMedia) {
+    if (window.matchMedia) {
       var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       var handleSystemTheme = function (event) {
         applyTheme(event.matches ? "dark" : "light");
