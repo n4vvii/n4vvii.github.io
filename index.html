@@ -6,6 +6,16 @@
     <meta name="theme-color" content="#f4f3ee">
     <meta name="description" content="n4vvii makes small hobby projects with Vibe Coding.">
     <title>n4vvii — small ideas, roughly made</title>
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("n4vvii-theme");
+          var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          var theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : systemTheme;
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (error) {}
+      }());
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +35,13 @@
             <a data-nav="about" href="#about">About</a>
             <a data-nav="contact" href="#contact">Contact</a>
           </nav>
-          <div class="header-socials" id="header-socials" aria-label="Social links"></div>
+          <div class="header-actions">
+            <div class="header-socials" id="header-socials" aria-label="Social links"></div>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+              <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+              <span class="sr-only" data-theme-label>Switch to dark mode</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -37,7 +53,7 @@
               <h1 id="hero-title" data-text="hero.title">I make the little things I think of.</h1>
               <p class="hero-lede" data-text="hero.body">A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.</p>
               <div class="hero-actions">
-                <a class="button button--primary" data-link="hero.primary" href="#projects">See the projects <span aria-hidden="true">↓</span></a>
+                <a class="button button--primary" data-link="hero.primary" href="#projects">See the work <span aria-hidden="true">↓</span></a>
                 <a class="text-link" data-link="hero.secondary" href="https://x.com/n4vvii" target="_blank" rel="noopener">Say hi on X <span aria-hidden="true">↗</span></a>
               </div>
             </div>
@@ -68,10 +84,10 @@
           <div class="container">
             <div class="section-heading">
               <div>
-                <p class="kicker" data-text="projectsSection.eyebrow">projects</p>
-                <h2 id="projects-title" data-text="projectsSection.title">A few things I made.</h2>
+                <p class="kicker" data-text="projectsSection.eyebrow">stuff I made</p>
+                <h2 id="projects-title" data-text="projectsSection.title">A couple of things on the shelf.</h2>
               </div>
-              <p class="section-intro" data-text="projectsSection.intro">Small ideas made for fun. Have a look around and enjoy the vibe.</p>
+              <p class="section-intro" data-text="projectsSection.intro">No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you.</p>
             </div>
             <div class="project-list" id="project-list"></div>
           </div>
@@ -80,12 +96,12 @@
         <section class="section about-section" id="about" aria-labelledby="about-title">
           <div class="container about-grid">
             <div class="about-copy">
-              <p class="kicker" data-text="about.eyebrow">about n4vvii</p>
+              <p class="kicker" data-text="about.eyebrow">the person behind the tabs</p>
               <a class="about-person" data-link="about.profile" href="https://github.com/n4vvii" target="_blank" rel="noopener">
                 <span data-text="about.profile.label">n4vvii on GitHub</span>
                 <span aria-hidden="true">↗</span>
               </a>
-              <h2 id="about-title" data-text="about.title">Just making things for fun.</h2>
+              <h2 id="about-title" data-text="about.title">No master plan. Just a lot of tabs.</h2>
               <div class="about-paragraphs" id="about-paragraphs"></div>
             </div>
             <aside class="recipe-card" aria-label="A rough recipe for making things">
@@ -113,9 +129,12 @@
 
       <footer class="site-footer">
         <div class="container footer-inner">
-          <span data-text="footer.left">© 2026 n4vvii / made for fun</span>
-          <span data-text="footer.middle">vibe-coded in Japan</span>
-          <a data-link="footer.kofi" href="https://ko-fi.com/n4vvii" target="_blank" rel="noopener">Support on Ko-fi <span aria-hidden="true">↗</span></a>
+          <div class="footer-copy">
+            <span data-text="footer.left">© 2026 n4vvii / made for fun</span>
+            <span data-text="footer.middle">vibe-coded in Japan</span>
+            <a data-link="footer.kofi" href="https://ko-fi.com/n4vvii" target="_blank" rel="noopener">Support on Ko-fi <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
         </div>
       </footer>
     </div>

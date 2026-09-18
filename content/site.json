@@ -22,7 +22,7 @@
     "eyebrow": "hobby coding / Japan",
     "title": "I make the little things I think of.",
     "body": "A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.",
-    "primary": { "label": "See the projects", "href": "#projects" },
+    "primary": { "label": "See the work", "href": "#projects" },
     "secondary": { "label": "Say hi on X", "href": "https://x.com/n4vvii" },
     "noteLabel": "current mood",
     "noteTitle": "Vibe Coding",
@@ -31,9 +31,9 @@
     "footnote": "made from a vague idea, a cup of something, and a little Vibe Coding"
   },
   "projectsSection": {
-    "eyebrow": "projects",
-    "title": "A few things I made.",
-    "intro": "Small ideas made for fun. Have a look around and enjoy the vibe."
+    "eyebrow": "stuff I made",
+    "title": "A couple of things on the shelf.",
+    "intro": "No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you."
   },
   "projects": [
     {
@@ -62,29 +62,29 @@
     }
   ],
   "about": {
-    "eyebrow": "about n4vvii",
-    "title": "Just making things for fun.",
+    "eyebrow": "the person behind the tabs",
+    "title": "No master plan. Just a lot of tabs.",
     "paragraphs": [
-      "I'm n4vvii. I use Vibe Coding to turn loose ideas into things I can use, share, and keep tinkering with.",
-      "This page is a small collection of those experiments. Have a look around and enjoy the vibe."
+      "I'm n4vvii, an indie developer in Japan. I use Vibe Coding to turn random sparks into things I can click, share, or keep tinkering with.",
+      "This page is less of a résumé and more of a small window into that process. If something here makes you curious, that is probably enough."
     ],
     "profile": {
       "label": "n4vvii on GitHub",
       "href": "https://github.com/n4vvii"
     },
-    "calloutLabel": "how it starts",
+    "calloutLabel": "the recipe",
     "calloutLines": [
-      "a small idea",
+      "a loose idea",
       "some Vibe Coding",
-      "make it usable",
-      "enjoy the vibe"
+      "a little stubbornness",
+      "ship it and see"
     ],
-    "calloutNote": "No big plan needed."
+    "calloutNote": "Good enough is a perfectly good place to start."
   },
   "contact": {
-    "eyebrow": "links",
-    "title": "Thanks for stopping by.",
-    "body": "Find me on GitHub or X. More small ideas will probably appear there.",
+    "eyebrow": "come say hi",
+    "title": "Got an idea? Or just passing through?",
+    "body": "Find me on the internet. I might be making something small.",
     "links": [
       { "label": "X / @n4vvii", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
       { "label": "GitHub / n4vvii", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }

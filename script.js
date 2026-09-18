@@ -25,6 +25,72 @@
     }
   };
 
+  var themeStorageKey = "n4vvii-theme";
+  var systemTheme = function () {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  var storedTheme = function () {
+    try {
+      var value = window.localStorage.getItem(themeStorageKey);
+      return value === "dark" || value === "light" ? value : "";
+    } catch (error) {
+      return "";
+    }
+  };
+
+  var applyTheme = function (theme) {
+    var nextTheme = theme === "dark" ? "dark" : "light";
+    var isDark = nextTheme === "dark";
+    document.documentElement.setAttribute("data-theme", nextTheme);
+
+    var toggle = document.querySelector("[data-theme-toggle]");
+    var icon = document.querySelector("[data-theme-icon]");
+    var label = document.querySelector("[data-theme-label]");
+    var labelText = isDark ? "Switch to light mode" : "Switch to dark mode";
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", String(isDark));
+      toggle.setAttribute("aria-label", labelText);
+      toggle.title = labelText;
+    }
+    if (icon) icon.textContent = isDark ? "☼" : "☾";
+    if (label) label.textContent = labelText;
+
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = isDark ? "#171b1d" : "#f4f3ee";
+  };
+
+  var initTheme = function () {
+    var saved = storedTheme();
+    applyTheme(document.documentElement.getAttribute("data-theme") || saved || systemTheme());
+
+    var toggle = document.querySelector("[data-theme-toggle]");
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        var current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        var next = current === "dark" ? "light" : "dark";
+        try {
+          window.localStorage.setItem(themeStorageKey, next);
+        } catch (error) {}
+        applyTheme(next);
+      });
+    }
+
+    if (!saved && window.matchMedia) {
+      var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      var handleSystemTheme = function (event) {
+        applyTheme(event.matches ? "dark" : "light");
+      };
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener("change", handleSystemTheme);
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleSystemTheme);
+      }
+    }
+  };
+
+  initTheme();
+
   var setLink = function (selector, link) {
     var node = document.querySelector(selector);
     if (!node || !link) return;
