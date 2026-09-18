@@ -406,6 +406,48 @@
     return article;
   };
 
+  var initProjectShelf = function () {
+    var section = document.querySelector(".projects-section");
+    var toggle = document.querySelector("[data-project-toggle]");
+    var label = document.querySelector("[data-project-toggle-label]");
+    var list = document.getElementById("project-list");
+    if (!section || !toggle || !list) return;
+
+    var setOpen = function (open) {
+      section.classList.toggle("is-projects-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      list.setAttribute("aria-hidden", String(!open));
+      toggle.setAttribute("aria-label", open ? "Close project shelf" : "Open project shelf");
+      if (label) label.textContent = open ? "Close project shelf" : "Open project shelf";
+
+      if (open) {
+        Array.prototype.forEach.call(list.querySelectorAll("[data-reveal]"), function (node) {
+          node.classList.add("is-visible");
+        });
+      }
+    };
+
+    toggle.addEventListener("click", function () {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 560px)") : null;
+    setOpen(window.innerWidth > 560);
+    window.requestAnimationFrame(function () {
+      setOpen(window.innerWidth > 560);
+    });
+    if (mobileQuery) {
+      var syncViewport = function (event) {
+        if (!event.matches) setOpen(true);
+      };
+      if (mobileQuery.addEventListener) {
+        mobileQuery.addEventListener("change", syncViewport);
+      } else if (mobileQuery.addListener) {
+        mobileQuery.addListener(syncViewport);
+      }
+    }
+  };
+
   var renderContact = function (links) {
     var target = document.getElementById("contact-links");
     if (!target) return;
@@ -461,6 +503,7 @@
         projectList.appendChild(renderProject(project, index));
       });
     }
+    initProjectShelf();
 
     text('[data-text="about.eyebrow"]', content.about.eyebrow);
     text('[data-text="about.title"]', content.about.title);

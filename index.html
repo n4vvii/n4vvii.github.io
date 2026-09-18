@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260918-project-card-2">
+    <link rel="stylesheet" href="styles.css?v=20260918-project-shelf-2">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -90,7 +90,15 @@
               </div>
               <p class="section-intro" data-text="projectsSection.intro">No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you.</p>
             </div>
-            <div class="project-list" id="project-list"></div>
+            <button class="project-list-toggle" type="button" data-project-toggle aria-expanded="false" aria-controls="project-list">
+              <span class="project-list-toggle__mark" aria-hidden="true"></span>
+              <span class="project-list-toggle__label" data-project-toggle-label>Open project shelf</span>
+              <span class="project-list-toggle__count">2 projects</span>
+              <span class="project-list-toggle__arrow" aria-hidden="true">↓</span>
+            </button>
+            <div class="project-list-reveal" data-project-list-reveal>
+              <div class="project-list" id="project-list"></div>
+            </div>
           </div>
         </section>
 
@@ -138,6 +146,6 @@
     <noscript>
       <div class="no-script">This little site needs JavaScript to load its editable content.</div>
     </noscript>
-    <script src="script.js?v=20260918-project-card-1" defer></script>
+    <script src="script.js?v=20260918-project-shelf-2" defer></script>
   </body>
 </html>
