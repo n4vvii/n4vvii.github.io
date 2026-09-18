@@ -1,0 +1,87 @@
+{
+  "site": {
+    "language": "en",
+    "title": "n4vvii — small ideas, roughly made",
+    "description": "A casual portfolio by n4vvii: small hobby projects made with Vibe Coding.",
+    "year": "2026"
+  },
+  "nav": {
+    "work": { "label": "Work", "href": "#work" },
+    "about": { "label": "About", "href": "#about" },
+    "contact": { "label": "Contact", "href": "#contact" }
+  },
+  "hero": {
+    "eyebrow": "hobby coding / Ōita, Japan",
+    "title": "I make the little things I think of.",
+    "body": "A casual corner for ideas made with Vibe Coding, curiosity, and whatever refuses to leave my head.",
+    "primary": { "label": "See the work", "href": "#work" },
+    "secondary": { "label": "Say hi on X", "href": "https://x.com/n4vvii" },
+    "noteLabel": "current mood",
+    "noteTitle": "Vibe Coding",
+    "noteBody": "Start with a loose idea. Shape it until it feels fun.",
+    "noteMeta": "hobby projects / no grand plan",
+    "footnote": "made from a vague idea, a cup of something, and a little Vibe Coding"
+  },
+  "work": {
+    "eyebrow": "stuff I made",
+    "title": "A couple of things on the shelf.",
+    "intro": "No case-study theatre here. Just small ideas, made for fun — click around if the mood takes you."
+  },
+  "projects": [
+    {
+      "status": "live",
+      "statusLabel": "live on the web",
+      "category": "web / database",
+      "title": "Ninedbase",
+      "description": "A player database for Prospi A. Search, browse, and enjoy the numbers without taking it too seriously.",
+      "link": "https://ninedbase.n4vvii.com/",
+      "linkLabel": "Open Ninedbase",
+      "visual": "database",
+      "caption": "a little database, made out of a lot of curiosity",
+      "tags": ["Prospi A", "web tool", "just for fun"]
+    },
+    {
+      "status": "wip",
+      "statusLabel": "still making it",
+      "category": "iOS / SwiftUI",
+      "title": "Unit Price Comparator",
+      "description": "A small SwiftUI app for the eternal supermarket question: which one is actually cheaper?",
+      "link": "https://github.com/n4vvii",
+      "linkLabel": "See what else is happening",
+      "visual": "calculator",
+      "caption": "currently somewhere between idea and app",
+      "tags": ["SwiftUI", "iOS", "work in progress"]
+    }
+  ],
+  "about": {
+    "eyebrow": "the person behind the tabs",
+    "title": "No master plan. Just a lot of tabs.",
+    "paragraphs": [
+      "I'm n4vvii, an indie developer in Ōita, Japan. I use Vibe Coding to turn random sparks into things I can click, share, or keep tinkering with.",
+      "This page is less of a résumé and more of a small window into that process. If something here makes you curious, that is probably enough."
+    ],
+    "calloutLabel": "the recipe",
+    "calloutLines": [
+      "a loose idea",
+      "some Vibe Coding",
+      "a little stubbornness",
+      "ship it and see"
+    ],
+    "calloutNote": "Good enough is a perfectly good place to start."
+  },
+  "contact": {
+    "eyebrow": "come say hi",
+    "title": "Got an idea? Or just passing through?",
+    "body": "Find me on the internet. I might be making something small.",
+    "links": [
+      { "label": "X / @n4vvii", "note": "say hello", "href": "https://x.com/n4vvii" },
+      { "label": "GitHub / n4vvii", "note": "look around", "href": "https://github.com/n4vvii" },
+      { "label": "Discord", "note": "find me there", "href": "https://discord.com/users/856906697633431552" }
+    ],
+    "kofi": { "label": "Support on Ko-fi", "href": "https://ko-fi.com/n4vvii" }
+  },
+  "footer": {
+    "left": "© 2026 n4vvii / made for fun",
+    "middle": "vibe-coded from Ōita, Japan"
+  }
+}
