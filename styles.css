@@ -26,7 +26,7 @@
   --on-dark-border: rgba(242, 245, 250, .24);
   --on-dark-grid: rgba(242, 245, 250, .045);
   --art-blue: #8ca7cf;
-  --header-bg: rgba(244, 245, 247, .38);
+  --header-bg: rgba(244, 245, 247, .3);
   --header-control-bg: #f9fafc;
   --header-control-hover: #eef2f7;
   --header-line: rgba(123, 135, 153, .42);
@@ -83,7 +83,7 @@
   --on-dark-border: rgba(239, 243, 250, .22);
   --on-dark-grid: rgba(239, 243, 250, .05);
   --art-blue: #8ca7cf;
-  --header-bg: rgba(18, 23, 33, .36);
+  --header-bg: rgba(18, 23, 33, .3);
   --header-control-bg: #1d2735;
   --header-control-hover: #263347;
   --header-line: rgba(119, 137, 163, .44);
@@ -130,7 +130,7 @@
     --on-dark-border: rgba(239, 243, 250, .22);
     --on-dark-grid: rgba(239, 243, 250, .05);
     --art-blue: #8ca7cf;
-    --header-bg: rgba(18, 23, 33, .36);
+    --header-bg: rgba(18, 23, 33, .3);
     --header-control-bg: #1d2735;
     --header-control-hover: #263347;
     --header-line: rgba(119, 137, 163, .44);
@@ -222,8 +222,8 @@ a {
   border-bottom: 1px solid var(--header-line);
   background: var(--header-bg);
   box-shadow: 0 10px 30px var(--header-shadow), inset 0 1px 0 var(--header-highlight);
-  -webkit-backdrop-filter: blur(36px) saturate(180%);
-  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(25px) saturate(180%);
 }
 
 .header-inner {
