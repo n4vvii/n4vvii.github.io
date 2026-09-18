@@ -1,0 +1,16 @@
+name = "n4vvii-contact-api"
+main = "src/index.js"
+compatibility_date = "2026-09-18"
+workers_dev = true
+send_metrics = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "n4vvii-contact"
+database_id = "228b97ed-26f1-48c1-9141-26dc37a28a5b"
+
+[vars]
+ALLOWED_ORIGINS = "https://n4vvii.com,https://www.n4vvii.com,https://n4vvii-portfolio.pages.dev,https://n4vvii.github.io,http://127.0.0.1:4173,http://localhost:4173"
+
+[secrets]
+required = ["TURNSTILE_SECRET", "RATE_LIMIT_SALT"]

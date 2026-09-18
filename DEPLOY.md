@@ -1,6 +1,25 @@
 # 公開手順
 
-このリポジトリはビルド不要の静的サイトです。Cloudflare Pagesの公開対象はリポジトリ直下の . です。wrangler.toml は設定だけ用意してあり、この作業ではデプロイしていません。
+このリポジトリはビルド不要の静的サイトです。Cloudflare Pagesの公開対象はリポジトリ直下の . です。**ポートフォリオ本体（Pages）はこの作業ではデプロイしていません。**
+
+## 問い合わせWorker（先に作成済み）
+
+フォーム送信先は `contact-worker/` のCloudflare Workerです。静的ポートフォリオとは別に、D1へ問い合わせを保存します。Workerのデプロイは許可済みですが、ポートフォリオ本体（Pages）のデプロイやGitHubへのpushは引き続きユーザー確認後に行います。
+
+    cd /Users/na/Master/Portfolio/n4vvii.github.io/contact-worker
+    wrangler d1 execute n4vvii-contact --remote --file schema/0001_initial.sql
+    openssl rand -hex 32 | wrangler secret put RATE_LIMIT_SALT
+    wrangler secret put TURNSTILE_SECRET
+    wrangler deploy
+
+`TURNSTILE_SECRET` はプロンプトにだけ入力し、ファイル・JSON・Gitに保存しません。WorkerのURLを `content/site.json` の `contact.form.endpoint` に設定します。
+
+Turnstile Widgetには `n4vvii.com` と `www.n4vvii.com` を許可済みです。将来ホスト名を追加するときは、Turnstileの許可ホスト名と `contact-worker/wrangler.toml` の `ALLOWED_ORIGINS` を同時に更新してからWorkerを再デプロイします。
+
+受信箱は公開しません。Mac上で次を実行して http://127.0.0.1:8788 を開きます。
+
+    cd /Users/na/Master/Portfolio/n4vvii.github.io/contact-worker
+    node admin/admin-server.mjs
 
 以下は、ドメイン購入と内容確認が終わったあとに上から順番に実行する手順です。
 

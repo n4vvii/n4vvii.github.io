@@ -443,6 +443,106 @@
     });
   };
 
+  var turnstileLoader;
+
+  var loadTurnstile = function () {
+    if (window.turnstile) return Promise.resolve();
+    if (turnstileLoader) return turnstileLoader;
+    turnstileLoader = new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      script.onload = function () { resolve(); };
+      script.onerror = function () { reject(new Error("Turnstile could not load.")); };
+      document.head.appendChild(script);
+    });
+    return turnstileLoader;
+  };
+
+  var initContactForm = function (config) {
+    var form = document.getElementById("contact-form");
+    var container = document.getElementById("contact-turnstile");
+    var status = document.getElementById("contact-form-status");
+    var submit = document.querySelector("[data-contact-submit]");
+    if (!form || !container || !status || !submit || form.dataset.ready === "true") return;
+    form.dataset.ready = "true";
+
+    var endpoint = String(config.endpoint || "").trim();
+    var widgetId;
+    var turnstileToken = "";
+    submit.innerHTML = (config.submitLabel || "Send message") + ' <span aria-hidden="true">↗</span>';
+    var setStatus = function (message, error) {
+      status.textContent = message || "";
+      status.classList.toggle("is-error", Boolean(error));
+    };
+    var mountTurnstile = function () {
+      if (!config.turnstileSiteKey) return Promise.reject(new Error("Verification is not configured."));
+      return loadTurnstile().then(function () {
+        widgetId = window.turnstile.render(container, {
+          sitekey: config.turnstileSiteKey,
+          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+          language: "en",
+          callback: function (token) { turnstileToken = token; },
+          "expired-callback": function () { turnstileToken = ""; },
+          "error-callback": function () { turnstileToken = ""; },
+        });
+      });
+    };
+
+    if (!endpoint) {
+      setStatus("The contact form is being set up. Please check back soon.", true);
+      submit.disabled = true;
+      return;
+    }
+    mountTurnstile().catch(function () {
+      setStatus("Verification could not load. Please try again later.", true);
+      submit.disabled = true;
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      if (!turnstileToken) {
+        setStatus("Please complete the verification first.", true);
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = config.sendingLabel || "Sending…";
+      setStatus("");
+      var data = new FormData(form);
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          target: data.get("target"),
+          message: data.get("message"),
+          replyTo: data.get("replyTo"),
+          website: data.get("website"),
+          turnstileToken: turnstileToken,
+        }),
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (payload) {
+            if (!response.ok || !payload.ok) throw new Error(payload.error || config.error);
+            return payload;
+          });
+        })
+        .then(function () {
+          form.classList.add("is-sent");
+          setStatus(config.success || "Received. Thanks for the note.");
+        })
+        .catch(function (error) {
+          setStatus(error.message || config.error || "Couldn't send that right now. Please try again later.", true);
+          submit.disabled = false;
+          submit.innerHTML = (config.submitLabel || "Send message") + ' <span aria-hidden="true">↗</span>';
+          turnstileToken = "";
+          if (window.turnstile && widgetId !== undefined) window.turnstile.reset(widgetId);
+        });
+    });
+  };
+
   var render = function (content) {
     document.documentElement.lang = content.site.language || "en";
     document.title = content.site.title;
@@ -505,6 +605,10 @@
     text('[data-text="contact.title"]', content.contact.title);
     text('[data-text="contact.body"]', content.contact.body);
     renderContact(content.contact.links);
+    Object.keys(content.contact.form || {}).forEach(function (key) {
+      text('[data-text="contact.form.' + key + '"]', content.contact.form[key]);
+    });
+    initContactForm(content.contact.form || {});
 
     text('[data-text="footer.left"]', content.footer.left);
     text('[data-text="footer.middle"]', content.footer.middle);

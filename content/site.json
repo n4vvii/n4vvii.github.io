@@ -76,6 +76,23 @@
       { "label": "X", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
       { "label": "GitHub", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }
     ],
+    "form": {
+      "eyebrow": "one inbox / every project",
+      "title": "Send a note.",
+      "body": "For Ninedbase, PriceMemo, or anything else. No account or email needed.",
+      "endpoint": "https://n4vvii-contact-api.naaaa010xx.workers.dev/api/contact",
+      "turnstileSiteKey": "0x4AAAAAAE8EE7fUDBpiglDV",
+      "targetLabel": "What is this about?",
+      "messageLabel": "Message",
+      "messageHint": "Up to 4,000 characters. Please do not include private information.",
+      "replyLabel": "Reply handle (optional)",
+      "replyHint": "X, GitHub, Discord, etc. No email needed.",
+      "submitLabel": "Send message",
+      "sendingLabel": "Sending…",
+      "success": "Received. Thanks for the note.",
+      "error": "Couldn't send that right now. Please try again later.",
+      "privacy": "Privacy: the message, selected project, optional reply handle, and time are stored. This form does not store your IP address, device details, or email address."
+    },
     "kofi": { "label": "Support on Ko-fi", "href": "https://ko-fi.com/n4vvii" }
   },
   "footer": {

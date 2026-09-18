@@ -15,6 +15,7 @@
 | projects | 作品名、短い説明、使用技術、リンク |
 | about | プロフィールと右側のメモ |
 | contact.links | X・GitHubの表示名、説明、URL、アイコン |
+| contact.form | 問い合わせフォームの文言、Worker送信先、Turnstileの公開site key |
 | contact.kofi | フッターのKo-fiリンク |
 | footer | フッターの文言 |
 
@@ -23,6 +24,12 @@
 projects の中の1つのオブジェクトが1作品です。title、description、stack、link を変更すれば、作品カードの内容が変わります。stack はサムネイル直下に通常の文字で表示され、複数の技術は `SwiftUI / iOS` のように「 / 」区切りでそのまま記載します。カードの文言は日本語、それ以外（見出し・About・フッター・ナビなど）は英語です。カード全体が link のURLを開くリンクです。
 
 visual は現在 database と calculator に対応しています。見た目の種類を増やす場合だけ、HTML/CSS/JavaScriptの変更が必要です。
+
+## 問い合わせフォーム
+
+`contact.form` の文言はフォームに表示されます。`endpoint` はWorkerの `https://...workers.dev/api/contact` のURL、`turnstileSiteKey` は公開してよいTurnstile site keyです。Turnstileの**secret keyはここやJSONには絶対に書かず**、Cloudflare WorkerのSecretとしてだけ保存します。
+
+フォームは対象・本文・任意の返信先だけを扱います。返信先はXやGitHubなどのIDを想定しており、メールアドレスは入力しないよう案内しています。
 
 ## ローカルで確認する
 
@@ -34,4 +41,4 @@ visual は現在 database と calculator に対応しています。見た目の
 
 JSONを編集したら、ブラウザを再読み込みして確認します。
 
-右上の月／太陽ボタンでライト・ダークを切り替えられます。選択したテーマはブラウザに保存されます。
+右上の月／太陽ボタンでライト・ダークを切り替えられます。初期表示はOSの設定に合わせ、手動の切り替えはそのページを開いている間だけ反映されます。

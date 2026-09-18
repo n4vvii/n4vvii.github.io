@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>n4vvii contact inbox</title>
+    <style>
+      :root { color-scheme: light dark; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #f4f5f7; color: #17202d; }
+      @media (prefers-color-scheme: dark) { :root { background: #121721; color: #e7ecf4; } }
+      body { max-width: 900px; margin: 0 auto; padding: 28px 18px 80px; }
+      header, article { border-bottom: 1px solid #7b8799; padding: 18px 0; }
+      h1 { margin: 0; font-size: 1.25rem; } p { white-space: pre-wrap; line-height: 1.65; } small { opacity: .72; } button { margin-right: 8px; padding: 8px 10px; border: 1px solid #007a99; border-radius: 4px; background: transparent; color: inherit; font: inherit; cursor: pointer; } button:hover { background: #dcecf2; color: #17202d; }
+    </style>
+  </head>
+  <body>
+    <header><h1>n4vvii / contact inbox</h1><small>Local only. It uses your Wrangler login to read D1.</small></header>
+    <main id="inbox"><p>Loading…</p></main>
+    <script>
+      const token = "__ADMIN_TOKEN__";
+      const request = (path, options = {}) => fetch(path, { ...options, headers: { "x-admin-token": token, ...(options.headers || {}) } });
+      const escape = (value) => String(value || "").replace(/[&<>\"]/g, (char) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;" }[char]));
+      async function load() {
+        const root = document.getElementById("inbox");
+        const response = await request("/api/inquiries");
+        const data = await response.json();
+        if (!response.ok) { root.innerHTML = `<p>${escape(data.error)}</p>`; return; }
+        root.innerHTML = data.inquiries.length ? data.inquiries.map((item) => `<article><strong>#${item.id} / ${escape(item.target)} ${item.read_at ? "· read" : "· unread"}</strong><br><small>${escape(item.created_at)}${item.reply_to ? " · reply: " + escape(item.reply_to) : ""}</small><p>${escape(item.body)}</p><button data-action="read" data-id="${item.id}">Mark read</button><button data-action="delete" data-id="${item.id}">Delete</button></article>`).join("") : "<p>No inquiries yet.</p>";
+      }
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("button[data-action]");
+        if (!button) return;
+        if (button.dataset.action === "delete" && !confirm("Delete this inquiry permanently?")) return;
+        await request(`/api/inquiries/${button.dataset.id}/${button.dataset.action}`, { method: "POST" });
+        load();
+      });
+      load();
+    </script>
+  </body>
+</html>

@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260919-glass-8">
+    <link rel="stylesheet" href="styles.css?v=20260919-contact-form-2">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -121,13 +121,51 @@
         </section>
 
         <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-          <div class="container contact-grid" data-reveal>
-            <div>
-              <p class="kicker" data-text="contact.eyebrow">come say hi</p>
-              <h2 id="contact-title" data-text="contact.title">Got an idea? Or just passing through?</h2>
-              <p class="contact-copy" data-text="contact.body">Find me on the internet. I might be making something small.</p>
+          <div class="container">
+            <div class="contact-grid" data-reveal>
+              <div>
+                <p class="kicker" data-text="contact.eyebrow">come say hi</p>
+                <h2 id="contact-title" data-text="contact.title">Got an idea? Or just passing through?</h2>
+                <p class="contact-copy" data-text="contact.body">Find me on the internet. I might be making something small.</p>
+              </div>
+              <div class="contact-links" id="contact-links"></div>
             </div>
-            <div class="contact-links" id="contact-links"></div>
+            <form class="contact-form" id="contact-form" novalidate data-reveal>
+              <div class="contact-form__heading">
+                <p class="kicker" data-text="contact.form.eyebrow">one inbox / every project</p>
+                <h3 data-text="contact.form.title">Send a note.</h3>
+                <p data-text="contact.form.body">For Ninedbase, PriceMemo, or anything else. No account or email needed.</p>
+              </div>
+              <div class="contact-form__fields">
+                <label class="form-field">
+                  <span data-text="contact.form.targetLabel">What is this about?</span>
+                  <select name="target" required>
+                    <option value="Ninedbase">Ninedbase</option>
+                    <option value="PriceMemo">PriceMemo</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="form-field form-field--message">
+                  <span data-text="contact.form.messageLabel">Message</span>
+                  <textarea name="message" maxlength="4000" required aria-describedby="contact-message-hint"></textarea>
+                  <small id="contact-message-hint" data-text="contact.form.messageHint">Up to 4,000 characters. Please do not include private information.</small>
+                </label>
+                <label class="form-field">
+                  <span data-text="contact.form.replyLabel">Reply handle (optional)</span>
+                  <input name="replyTo" type="text" maxlength="160" autocomplete="off" aria-describedby="contact-reply-hint">
+                  <small id="contact-reply-hint" data-text="contact.form.replyHint">X, GitHub, Discord, etc. No email needed.</small>
+                </label>
+                <div class="form-honeypot" aria-hidden="true">
+                  <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+                </div>
+                <div class="contact-turnstile" id="contact-turnstile" aria-label="Spam protection"></div>
+                <div class="contact-form__action">
+                  <button class="button button--primary" type="submit" data-contact-submit>Send message <span aria-hidden="true">↗</span></button>
+                  <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+                </div>
+                <p class="contact-form__privacy" data-text="contact.form.privacy">Privacy: the message, selected project, optional reply handle, and time are stored.</p>
+              </div>
+            </form>
           </div>
         </section>
       </main>
@@ -146,6 +184,6 @@
     <noscript>
       <div class="no-script">This little site needs JavaScript to load its editable content.</div>
     </noscript>
-    <script src="script.js?v=20260918-color-system-5" defer></script>
+    <script src="script.js?v=20260919-contact-form-3" defer></script>
   </body>
 </html>

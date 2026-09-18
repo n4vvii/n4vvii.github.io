@@ -1,0 +1,4 @@
+contact-worker/.dev.vars*
+contact-worker/.env*
+contact-worker/.wrangler/
+.wrangler/
