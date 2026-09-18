@@ -204,12 +204,17 @@
     check();
   };
 
+  var canonicalizeLocation = function () {
+    if (window.location.hostname !== "n4vvii.com") return;
+    if (window.location.pathname !== "/" || window.location.search || window.location.hash) {
+      window.history.replaceState(null, "", "/");
+    }
+  };
+
   var alignHashTarget = function () {
     var targetId = window.location.hash.slice(1);
     if (!targetId || targetId === "top") {
-      if (window.location.pathname === "/" && (window.location.search || window.location.hash)) {
-        window.history.replaceState(null, "", "/");
-      }
+      canonicalizeLocation();
       return;
     }
 
@@ -221,7 +226,7 @@
     root.style.scrollBehavior = "auto";
     target.scrollIntoView({ block: "start", behavior: "auto" });
     root.style.scrollBehavior = previousBehavior;
-    if (window.location.pathname === "/") window.history.replaceState(null, "", "/");
+    canonicalizeLocation();
   };
 
   var initCanonicalScrollLinks = function () {
@@ -235,7 +240,7 @@
 
         event.preventDefault();
         target.scrollIntoView({ block: "start", behavior: "smooth" });
-        if (window.location.pathname === "/") window.history.replaceState(null, "", "/");
+        canonicalizeLocation();
       });
     });
   };
