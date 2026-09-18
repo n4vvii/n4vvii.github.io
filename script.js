@@ -431,21 +431,10 @@
       setOpen(toggle.getAttribute("aria-expanded") !== "true");
     });
 
-    var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 560px)") : null;
-    setOpen(window.innerWidth > 560);
+    setOpen(false);
     window.requestAnimationFrame(function () {
-      setOpen(window.innerWidth > 560);
+      setOpen(false);
     });
-    if (mobileQuery) {
-      var syncViewport = function (event) {
-        if (!event.matches) setOpen(true);
-      };
-      if (mobileQuery.addEventListener) {
-        mobileQuery.addEventListener("change", syncViewport);
-      } else if (mobileQuery.addListener) {
-        mobileQuery.addListener(syncViewport);
-      }
-    }
   };
 
   var renderContact = function (links) {
