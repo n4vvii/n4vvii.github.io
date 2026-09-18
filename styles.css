@@ -1567,16 +1567,50 @@ h2 {
   }
 
   .footer-inner {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
     gap: 1.5rem;
   }
 
   .footer-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     width: 100%;
     align-items: flex-start;
-    flex-direction: column;
-    gap: .7rem;
+    gap: .7rem 1rem;
+  }
+
+  .footer-copy > span:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-copy > span:nth-child(2) {
+    grid-column: 1;
+  }
+
+  .footer-copy > a {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .back-to-top {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-copy > span:first-child,
+  .footer-copy > span:nth-child(2),
+  .footer-copy > a {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
   }
 
   .back-to-top {
