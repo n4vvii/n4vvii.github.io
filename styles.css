@@ -14,8 +14,9 @@
   --mint: #e3f0ed;
   --field: #e7f3f1;
   --navy: #163d4b;
-  --header-bg: rgba(243, 247, 246, .93);
-  --header-line: rgba(182, 211, 210, .72);
+  --header-bg: rgba(243, 247, 246, .74);
+  --header-line: rgba(182, 211, 210, .62);
+  --header-shadow: rgba(23, 40, 45, .08);
   --body-soft: #4b6267;
   --inverse: #fffef9;
   --on-ink: #fffef9;
@@ -46,8 +47,9 @@
   --mint: #1e3c3d;
   --field: #142a2e;
   --navy: #082733;
-  --header-bg: rgba(14, 26, 30, .92);
-  --header-line: rgba(95, 224, 228, .3);
+  --header-bg: rgba(14, 26, 30, .72);
+  --header-line: rgba(95, 224, 228, .34);
+  --header-shadow: rgba(0, 0, 0, .2);
   --body-soft: #c0d5d4;
   --inverse: #f1fffd;
   --on-ink: #08171a;
@@ -70,8 +72,9 @@
     --mint: #1e3c3d;
     --field: #142a2e;
     --navy: #082733;
-    --header-bg: rgba(14, 26, 30, .92);
-    --header-line: rgba(95, 224, 228, .3);
+    --header-bg: rgba(14, 26, 30, .72);
+    --header-line: rgba(95, 224, 228, .34);
+    --header-shadow: rgba(0, 0, 0, .2);
     --body-soft: #c0d5d4;
     --inverse: #f1fffd;
     --on-ink: #08171a;
@@ -148,8 +151,9 @@ a {
   top: 0;
   border-bottom: 1px solid var(--header-line);
   background: var(--header-bg);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px var(--header-shadow), inset 0 1px 0 rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: blur(20px) saturate(145%);
+  backdrop-filter: blur(20px) saturate(145%);
 }
 
 .header-inner {
