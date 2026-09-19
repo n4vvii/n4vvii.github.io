@@ -2,7 +2,7 @@
   "use strict";
 
   // Keep the measurement ID in this single configuration value.
-  var measurementId = "G-09JKJQR7C9";
+  var measurementId = "G-7LDB44KJZK";
   var productionHosts = {
     "n4vvii.com": true,
     "www.n4vvii.com": true
