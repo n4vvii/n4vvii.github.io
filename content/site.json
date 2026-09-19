@@ -99,5 +99,13 @@
   "footer": {
     "left": "© 2026 n4vvii / made for fun",
     "middle": "vibe-coded in Japan"
+  },
+  "privacy": {
+    "analytics": "Google Analytics measures site usage with cookies. This site does not intentionally collect personally identifying information through Analytics; names, email addresses, and message content are not sent to it.",
+    "optOut": {
+      "label": "Opt out with Google's browser add-on",
+      "href": "https://tools.google.com/dlpage/gaoptout"
+    },
+    "contact": "Contact form messages are stored in Cloudflare D1; IP addresses and device details are not stored."
   }
 }

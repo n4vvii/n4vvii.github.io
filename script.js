@@ -299,7 +299,8 @@
     node.href = safeUrl(link.href);
     var label = node.firstChild;
     if (label && label.nodeType === Node.TEXT_NODE && link.label && label.textContent.trim()) {
-      label.textContent = link.label + " ";
+      var hadTrailingSpace = /\s$/.test(label.textContent);
+      label.textContent = link.label + (hadTrailingSpace ? " " : "");
     }
   };
 
@@ -644,6 +645,10 @@
     text('[data-text="footer.left"]', content.footer.left);
     text('[data-text="footer.middle"]', content.footer.middle);
     setLink('[data-link="footer.kofi"]', content.contact.kofi);
+
+    text('[data-text="privacy.analytics"]', content.privacy && content.privacy.analytics);
+    setLink('[data-link="privacy.optOut"]', content.privacy && content.privacy.optOut);
+    text('[data-text="privacy.contact"]', content.privacy && content.privacy.contact);
 
     initReveals();
     initCanonicalScrollLinks();

@@ -2,6 +2,10 @@
 
 このリポジトリはビルド不要の静的サイトです。Cloudflare Pagesの公開対象はリポジトリ直下の . です。現在の本番URLは https://n4vvii.com/ 、Pagesの既定URLは https://n4vvii-portfolio.pages.dev/ です。
 
+## Google Analytics（GA4）
+
+`analytics.js` に測定IDを1か所だけ設定しています。`n4vvii.com` と `www.n4vvii.com` でのみGoogleのgtagを読み込み、ローカル・Pages既定URL・その他のホストでは送信しません。フッターにはCookie利用、個人を直接特定する情報をAnalyticsへ意図的に送らないこと、Googleのオプトアウト方法、問い合わせ内容の保存先とIPアドレスを保存しないことを表示しています。
+
 ## 問い合わせWorker（先に作成済み）
 
 フォーム送信先は `contact-worker/` のCloudflare Workerです。静的ポートフォリオとは別に、D1へ問い合わせを保存します。WorkerとPagesの初回デプロイ、`n4vvii.com` の接続は完了しています。
