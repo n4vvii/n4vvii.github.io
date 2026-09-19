@@ -6,6 +6,10 @@
 
 `analytics.js` に測定IDを1か所だけ設定しています。`n4vvii.com` と `www.n4vvii.com` でのみGoogleのgtagを読み込み、ローカル・Pages既定URL・その他のホストでは送信しません。フッターにはCookie利用、個人を直接特定する情報をAnalyticsへ意図的に送らないこと、Googleのオプトアウト方法、問い合わせ内容の保存先とIPアドレスを保存しないことを表示しています。
 
+## Google AdSense（審査準備）
+
+`index.html` のheadに運営者ID `ca-pub-2854845503175082` の審査用スクリプトを設定しています。リポジトリ直下の `ads.txt` は `https://n4vvii.com/ads.txt` で `text/plain` として公開します。広告枠は審査準備の段階では設置しません。
+
 ## 問い合わせWorker（先に作成済み）
 
 フォーム送信先は `contact-worker/` のCloudflare Workerです。静的ポートフォリオとは別に、D1へ問い合わせを保存します。WorkerとPagesの初回デプロイ、`n4vvii.com` の接続は完了しています。

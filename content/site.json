@@ -106,6 +106,11 @@
       "label": "Opt out with Google's browser add-on",
       "href": "https://tools.google.com/dlpage/gaoptout"
     },
+    "adsense": "Google AdSense is used on this site. Google may use cookies to serve and measure ads.",
+    "adsSettings": {
+      "label": "Turn off personalized ads in Google Ads Settings",
+      "href": "https://adssettings.google.com/"
+    },
     "contact": "Contact form messages are stored in Cloudflare D1; IP addresses and device details are not stored."
   }
 }

@@ -18,7 +18,7 @@
 | contact.form | 問い合わせフォームの文言、Worker送信先、Turnstileの公開site key |
 | contact.kofi | フッターのKo-fiリンク |
 | footer | フッターの文言 |
-| privacy | フッターのGoogle Analytics・Cookie・問い合わせ保存に関する短い表記 |
+| privacy | フッターのGoogle Analytics・AdSense・Cookie・問い合わせ保存に関する短い表記 |
 
 ## 作品を追加・変更するとき
 
@@ -47,3 +47,7 @@ JSONを編集したら、ブラウザを再読み込みして確認します。
 ## Google Analytics
 
 測定IDは `analytics.js` の1か所だけに設定しています。本番の `n4vvii.com` でだけ送信し、ローカルHTTPサーバー・Pagesの既定URL・その他のホストでは送信しません。測定IDを変更するときは、このファイルの `measurementId` を変更してください。
+
+## Google AdSense
+
+運営者IDは `index.html` のAdSenseスクリプトに設定しています。審査用の `ads.txt` はリポジトリ直下にあり、Cloudflare Pagesでは `https://n4vvii.com/ads.txt` として公開されます。広告枠はまだ設置していません。

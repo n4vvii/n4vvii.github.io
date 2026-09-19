@@ -648,6 +648,8 @@
 
     text('[data-text="privacy.analytics"]', content.privacy && content.privacy.analytics);
     setLink('[data-link="privacy.optOut"]', content.privacy && content.privacy.optOut);
+    text('[data-text="privacy.adsense"]', content.privacy && content.privacy.adsense);
+    setLink('[data-link="privacy.adsSettings"]', content.privacy && content.privacy.adsSettings);
     text('[data-text="privacy.contact"]', content.privacy && content.privacy.contact);
 
     initReveals();
