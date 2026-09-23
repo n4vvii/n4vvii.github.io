@@ -10,20 +10,43 @@
     }
   },
   "nav": {
-    "project": { "label": "Project", "href": "#projects" },
-    "about": { "label": "About", "href": "#about" },
-    "contact": { "label": "Contact", "href": "#contact" }
+    "project": {
+      "label": "Project",
+      "href": "#projects"
+    },
+    "about": {
+      "label": "About",
+      "href": "#about"
+    },
+    "contact": {
+      "label": "Contact",
+      "href": "#contact"
+    }
   },
   "socials": {
-    "x": { "label": "X", "href": "https://x.com/n4vvii", "icon": "x" },
-    "github": { "label": "GitHub", "href": "https://github.com/n4vvii", "icon": "github" }
+    "x": {
+      "label": "X",
+      "href": "https://x.com/n4vvii",
+      "icon": "x"
+    },
+    "github": {
+      "label": "GitHub",
+      "href": "https://github.com/n4vvii",
+      "icon": "github"
+    }
   },
   "hero": {
     "eyebrow": "hobby coding / Japan",
     "title": "I make the little things I think of.",
     "body": "Made from curiosity, a vague idea, and a little Vibe Coding.",
-    "primary": { "label": "See the work", "href": "#projects" },
-    "secondary": { "label": "Say hi on X", "href": "https://x.com/n4vvii" },
+    "primary": {
+      "label": "See the work",
+      "href": "#projects"
+    },
+    "secondary": {
+      "label": "Say hi on X",
+      "href": "https://x.com/n4vvii"
+    },
     "noteLabel": "current mood",
     "noteTitle": "Vibe Coding",
     "noteBody": "Start with a loose idea. Shape it until it feels fun.",
@@ -74,8 +97,18 @@
     "title": "Got an idea? Or just passing through?",
     "body": "Find me on the internet. I might be making something small.",
     "links": [
-      { "label": "X", "note": "say hello", "href": "https://x.com/n4vvii", "icon": "x" },
-      { "label": "GitHub", "note": "look around", "href": "https://github.com/n4vvii", "icon": "github" }
+      {
+        "label": "X",
+        "note": "say hello",
+        "href": "https://x.com/n4vvii",
+        "icon": "x"
+      },
+      {
+        "label": "GitHub",
+        "note": "look around",
+        "href": "https://github.com/n4vvii",
+        "icon": "github"
+      }
     ],
     "form": {
       "eyebrow": "one inbox / every project",
@@ -94,23 +127,16 @@
       "error": "Couldn't send that right now. Please try again later.",
       "privacy": "Privacy: the message, selected project, optional reply handle, and time are stored. This form does not store your IP address, device details, or email address."
     },
-    "kofi": { "label": "Support on Ko-fi", "href": "https://ko-fi.com/n4vvii" }
+    "kofi": {
+      "label": "Support on Ko-fi",
+      "href": "https://ko-fi.com/n4vvii"
+    }
   },
   "footer": {
     "left": "© 2026 n4vvii / made for fun",
     "middle": "vibe-coded in Japan"
   },
   "privacy": {
-    "analytics": "Google Analytics measures site usage with cookies. This site does not intentionally collect personally identifying information through Analytics; names, email addresses, and message content are not sent to it.",
-    "optOut": {
-      "label": "Opt out with Google's browser add-on",
-      "href": "https://tools.google.com/dlpage/gaoptout"
-    },
-    "adsense": "Google AdSense is used on this site. Google may use cookies to serve and measure ads.",
-    "adsSettings": {
-      "label": "Turn off personalized ads in Google Ads Settings",
-      "href": "https://adssettings.google.com/"
-    },
     "contact": "Contact form messages are stored in Cloudflare D1; IP addresses and device details are not stored."
   }
 }
